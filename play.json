@@ -1066,14 +1066,14 @@
     {
       "name": "search",
       "type": "string",
-      "description": "Youtube search term",
+      "description": "YouTube search term.",
       "required": true,
       "choices": [],
       "storeAs": "playsearchterm",
       "completion": false
     }
   ],
-  "description": "Plays youtube music.",
+  "description": "Plays YouTube music",
   "folder": []
 }
     
