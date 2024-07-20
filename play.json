@@ -1,0 +1,1079 @@
+    {
+  "name": "play",
+  "type": "action",
+  "trigger": "slashCommand",
+  "actions": [
+    {
+      "name": "Check If Member",
+      "file": "checkIfMember.js",
+      "data": {
+        "name": "Check If Member",
+        "member": {
+          "type": "author",
+          "value": ""
+        },
+        "check": "Is In Voice Channel?",
+        "true": {
+          "type": "continue",
+          "value": ""
+        },
+        "trueActions": [],
+        "false": {
+          "type": "anchorJump",
+          "value": "playvcerror"
+        },
+        "falseActions": []
+      },
+      "id": 1721385205458
+    },
+    {
+      "name": "Get Member Info",
+      "file": "getMemberInfo.js",
+      "data": {
+        "name": "Get Member Info",
+        "member": {
+          "type": "author",
+          "value": ""
+        },
+        "get": {
+          "type": "voiceChannel",
+          "value": ""
+        },
+        "store": {
+          "type": "temporary",
+          "value": "uservc"
+        }
+      },
+      "id": 1721388618615
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "play",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "***:mag: Searching for:***\n`${tempVars('playsearchterm')}`",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "replymsg",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": false,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721385619598
+    },
+    {
+      "name": "Create List",
+      "file": "createList.js",
+      "data": {
+        "name": "Create List",
+        "list": {
+          "type": "temporary",
+          "value": "searchtitles"
+        }
+      },
+      "id": 1721385242024
+    },
+    {
+      "name": "Create List",
+      "file": "createList.js",
+      "data": {
+        "name": "Create List",
+        "list": {
+          "type": "temporary",
+          "value": "searchid"
+        }
+      },
+      "id": 1721385167461
+    },
+    {
+      "name": "Create List",
+      "file": "createList.js",
+      "data": {
+        "name": "Create List",
+        "list": {
+          "type": "temporary",
+          "value": "searchthumb"
+        }
+      },
+      "id": 1721492781739
+    },
+    {
+      "name": "Repeat",
+      "file": "repeat.js",
+      "data": {
+        "name": "Repeat",
+        "repeat": "10",
+        "store": {
+          "type": "temporary",
+          "value": "num"
+        },
+        "actions": [
+          {
+            "name": "YouTube Video Search",
+            "file": "ytSearch.js",
+            "data": {
+              "name": "YouTube Video Search",
+              "query": "${tempVars('playsearchterm')}",
+              "result": "Custom",
+              "resultPosition": "${tempVars('num')}",
+              "get": "Title",
+              "store": {
+                "type": "temporary",
+                "value": "fetchtitle"
+              },
+              "noResults": {
+                "type": "anchorJump",
+                "value": "playsearcherror"
+              },
+              "noResultsActions": []
+            },
+            "id": 1721493519652
+          },
+          {
+            "name": "YouTube Video Search",
+            "file": "ytSearch.js",
+            "data": {
+              "name": "YouTube Video Search",
+              "query": "${tempVars('playsearchterm')}",
+              "result": "Custom",
+              "resultPosition": "${tempVars('num')}",
+              "get": "ID",
+              "store": {
+                "type": "temporary",
+                "value": "fetchid"
+              },
+              "noResults": {
+                "type": "anchorJump",
+                "value": "playsearcherror"
+              },
+              "noResultsActions": []
+            },
+            "id": 1721493519653
+          },
+          {
+            "name": "YouTube Video Search",
+            "file": "ytSearch.js",
+            "data": {
+              "name": "YouTube Video Search",
+              "query": "${tempVars('playsearchterm')}",
+              "result": "Custom",
+              "resultPosition": "${tempVars('num')}",
+              "get": "Thumbnail URL",
+              "store": {
+                "type": "temporary",
+                "value": "fetchthumb"
+              },
+              "noResults": {
+                "type": "anchorJump",
+                "value": "playsearcherror"
+              },
+              "noResultsActions": []
+            },
+            "id": 1721493519654
+          },
+          {
+            "name": "Create List Element",
+            "file": "createListElement.js",
+            "data": {
+              "name": "Create List Element",
+              "list": {
+                "type": "tempVar",
+                "value": "searchtitles"
+              },
+              "value": {
+                "type": "tempVar",
+                "value": "fetchtitle"
+              }
+            },
+            "id": 1721493519655
+          },
+          {
+            "name": "Create List Element",
+            "file": "createListElement.js",
+            "data": {
+              "name": "Create List Element",
+              "list": {
+                "type": "tempVar",
+                "value": "searchid"
+              },
+              "value": {
+                "type": "tempVar",
+                "value": "fetchid"
+              }
+            },
+            "id": 1721493519656
+          },
+          {
+            "name": "Create List Element",
+            "file": "createListElement.js",
+            "data": {
+              "name": "Create List Element",
+              "list": {
+                "type": "tempVar",
+                "value": "searchthumb"
+              },
+              "value": {
+                "type": "tempVar",
+                "value": "fetchthumb"
+              }
+            },
+            "id": 1721493519657
+          }
+        ]
+      },
+      "id": 1721385279612
+    },
+    {
+      "name": "Create List",
+      "file": "createList.js",
+      "data": {
+        "name": "Create List",
+        "list": {
+          "type": "temporary",
+          "value": "titlelist"
+        }
+      },
+      "id": 1721386919084
+    },
+    {
+      "name": "Loop Through List",
+      "file": "loopThroughList.js",
+      "data": {
+        "name": "Loop Through List",
+        "await": true,
+        "list": {
+          "type": "tempVar",
+          "value": "searchtitles"
+        },
+        "storeIterationAs": {
+          "type": "temporary",
+          "value": "titlenum"
+        },
+        "storeValueAs": {
+          "type": "temporary",
+          "value": "title"
+        },
+        "actions": [
+          {
+            "name": "Calculate",
+            "file": "calculate.js",
+            "data": {
+              "name": "Calculate",
+              "firstNumber": "${tempVars('titlenum')}",
+              "operation": "Addition",
+              "secondNumber": "1",
+              "store": {
+                "type": "temporary",
+                "value": "titlenump1"
+              }
+            },
+            "id": 1721493519658
+          },
+          {
+            "name": "Create List Element",
+            "file": "createListElement.js",
+            "data": {
+              "name": "Create List Element",
+              "list": {
+                "type": "tempVar",
+                "value": "titlelist"
+              },
+              "value": {
+                "type": "string",
+                "value": "[${tempVars('titlenump1')}] - ${tempVars('title')}"
+              }
+            },
+            "id": 1721493519659
+          }
+        ]
+      },
+      "id": 1721386831576
+    },
+    {
+      "name": "Convert List To Text",
+      "file": "convertListToText.js",
+      "data": {
+        "name": "Convert List To Text",
+        "list": {
+          "type": "tempVar",
+          "value": "titlelist"
+        },
+        "separator": "\\n",
+        "store": {
+          "type": "temporary",
+          "value": "titlelistparsed"
+        }
+      },
+      "id": 1721387024719
+    },
+    {
+      "name": "Delete Message",
+      "file": "deleteMessage.js",
+      "data": {
+        "name": "Delete Message",
+        "message": {
+          "type": "tempVar",
+          "value": "replymsg"
+        }
+      },
+      "id": 1721387234775
+    },
+    {
+      "name": "Join Voice Channel",
+      "file": "joinVoiceChannel.js",
+      "data": {
+        "name": "Join Voice Channel",
+        "channel": {
+          "type": "tempVar",
+          "value": "uservc"
+        }
+      },
+      "id": 1721388598835
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "Reply with a number within 30s.",
+        "actionRows": [
+          {
+            "type": "selectMenu",
+            "data": {
+              "type": {
+                "type": "temporary",
+                "value": "30"
+              },
+              "options": [
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "0"
+                        },
+                        "id": 1721493519660
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519661
+                      }
+                    ],
+                    "label": "1",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "1"
+                        },
+                        "id": 1721493519662
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519663
+                      }
+                    ],
+                    "label": "2",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "2"
+                        },
+                        "id": 1721493519664
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519665
+                      }
+                    ],
+                    "label": "3",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "3"
+                        },
+                        "id": 1721493519666
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519667
+                      }
+                    ],
+                    "label": "4",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "4"
+                        },
+                        "id": 1721493519668
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519669
+                      }
+                    ],
+                    "label": "5",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "5"
+                        },
+                        "id": 1721493519670
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519671
+                      }
+                    ],
+                    "label": "6",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "6"
+                        },
+                        "id": 1721493519672
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519673
+                      }
+                    ],
+                    "label": "7",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "7"
+                        },
+                        "id": 1721493519674
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519675
+                      }
+                    ],
+                    "label": "8",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "8"
+                        },
+                        "id": 1721493519676
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519677
+                      }
+                    ],
+                    "label": "9",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                },
+                {
+                  "type": "selectMenu",
+                  "data": {
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "selectnum"
+                          },
+                          "value": "9"
+                        },
+                        "id": 1721493519678
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "playmus"
+                        },
+                        "id": 1721493519679
+                      }
+                    ],
+                    "label": "10",
+                    "description": "",
+                    "pushAs": "",
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "default": false
+                  }
+                }
+              ],
+              "maxSelectable": 1,
+              "minSelectable": 1,
+              "storeInteractionAs": {
+                "type": "temporary",
+                "value": ""
+              },
+              "placeholder": "",
+              "disabled": false,
+              "storeOptionsListAs": {
+                "type": "temporary",
+                "value": ""
+              },
+              "onSubmit": [],
+              "customID": "Auto Generated",
+              "id": "",
+              "storeInteractionAuthorAs": {
+                "type": "temporary",
+                "value": ""
+              }
+            }
+          }
+        ],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "play",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "***:mag: Search results:***\n${tempVars('titlelistparsed')}",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": false,
+        "storeAs": {
+          "value": "replymsg2",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": false,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721386372657
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1721388641454
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "playvcerror"
+      },
+      "id": 1721388648260
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "play",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "You're not in a voice channel!",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "playvcerrormsg",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ]
+      },
+      "id": 1721388665367
+    },
+    {
+      "name": "Wait",
+      "file": "wait.js",
+      "data": {
+        "name": "Wait",
+        "timeUnit": "Seconds",
+        "time": "5"
+      },
+      "id": 1721398014560
+    },
+    {
+      "name": "Delete Message",
+      "file": "deleteMessage.js",
+      "data": {
+        "name": "Delete Message",
+        "message": {
+          "type": "tempVar",
+          "value": "playvcerrormsg"
+        }
+      },
+      "id": 1721398039476
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1721389039303
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "playmus"
+      },
+      "id": 1721388897104
+    },
+    {
+      "name": "Get List Element",
+      "file": "getListElement.js",
+      "data": {
+        "name": "Get List Element",
+        "list": {
+          "type": "tempVar",
+          "value": "searchid"
+        },
+        "elementPosition": "Custom",
+        "index": "${tempVars('selectnum')}",
+        "store": {
+          "type": "temporary",
+          "value": "songid"
+        }
+      },
+      "id": 1721388904063
+    },
+    {
+      "name": "Get List Element",
+      "file": "getListElement.js",
+      "data": {
+        "name": "Get List Element",
+        "list": {
+          "type": "tempVar",
+          "value": "searchtitles"
+        },
+        "elementPosition": "Custom",
+        "index": "${tempVars('selectnum')}",
+        "store": {
+          "type": "temporary",
+          "value": "songtitle"
+        }
+      },
+      "id": 1721388946209
+    },
+    {
+      "name": "Get List Element",
+      "file": "getListElement.js",
+      "data": {
+        "name": "Get List Element",
+        "list": {
+          "type": "tempVar",
+          "value": "searchthumb"
+        },
+        "elementPosition": "Custom",
+        "index": "${tempVars('selectnum')}",
+        "store": {
+          "type": "temporary",
+          "value": "songthumb"
+        }
+      },
+      "id": 1721492931825
+    },
+    {
+      "name": "Delete Message",
+      "file": "deleteMessage.js",
+      "data": {
+        "name": "Delete Message",
+        "message": {
+          "type": "tempVar",
+          "value": "replymsg2"
+        }
+      },
+      "id": 1721389007874
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "play",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "${tempVars('songthumb')}",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "***:musical_note: Now playing:***\n[${tempVars('songtitle')}](https://www.youtube.com/watch?v=${tempVars('songid')})",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "replyToInteraction": false,
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": false,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721391608153
+    },
+    {
+      "name": "Play YouTube Song",
+      "file": "playYT.js",
+      "data": {
+        "name": "Play YouTube Song",
+        "url": "https://www.youtube.com/watch?v=${tempVars('songid')}",
+        "queuing": "Don't Queue, Just Play",
+        "queuePosition": "",
+        "quality": "Default",
+        "memoryAllocation": "Default"
+      },
+      "id": 1721388962680
+    }
+  ],
+  "customId": 1721382951364,
+  "boundary": {
+    "worksIn": "guild",
+    "limits": []
+  },
+  "parameters": [
+    {
+      "name": "search",
+      "type": "string",
+      "description": "Youtube search term",
+      "required": true,
+      "choices": [],
+      "storeAs": "playsearchterm",
+      "completion": false
+    }
+  ],
+  "description": "Plays youtube music.",
+  "folder": []
+}
+    
