@@ -1,0 +1,650 @@
+    {
+  "name": "steam-link",
+  "type": "action",
+  "trigger": "slashCommand",
+  "actions": [
+    {
+      "name": "Comment",
+      "file": "comment.js",
+      "data": {
+        "name": "Comment",
+        "comment": "Get a Steam API key here: https://steamcommunity.com/dev/apikey"
+      },
+      "id": 1720709126276
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "steamapikey"
+        },
+        "value": "undefined"
+      },
+      "id": 1720709095517
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "steamapikey"
+        },
+        "comparator": "Equals",
+        "compareValue": "undefined",
+        "true": {
+          "type": "anchorJump",
+          "value": "apikeyerror"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1720710457379
+    },
+    {
+      "name": "Get User Data",
+      "file": "getUserData.js",
+      "data": {
+        "name": "Get User Data",
+        "user": {
+          "type": "author",
+          "value": ""
+        },
+        "dataName": "steamid",
+        "defaultValue": "0",
+        "store": {
+          "type": "temporary",
+          "value": "usersteamid"
+        }
+      },
+      "id": 1720709009466
+    },
+    {
+      "name": "Check If Text Starts With",
+      "file": "checkIfTextStartsWith.js",
+      "data": {
+        "name": "Check If Text Starts With",
+        "string": "${tempVars('steamlinkurl')}",
+        "startsWith": "https://",
+        "true": {
+          "type": "continue",
+          "value": ""
+        },
+        "trueActions": [],
+        "false": {
+          "type": "anchorJump",
+          "value": "steamlinkerror"
+        },
+        "falseActions": []
+      },
+      "id": 1720708887788
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "usersteamid"
+        },
+        "comparator": "Equals",
+        "compareValue": "0",
+        "true": {
+          "type": "continue",
+          "value": ""
+        },
+        "trueActions": [],
+        "false": {
+          "type": "anchorJump",
+          "value": "steamlinkerror"
+        },
+        "falseActions": []
+      },
+      "id": 1720709043615
+    },
+    {
+      "name": "Check If Text Includes",
+      "file": "checkIfTextIncludes.js",
+      "data": {
+        "name": "Check If Text Includes",
+        "string": "${tempVars('steamlinkurl')}",
+        "includes": "/id/",
+        "true": {
+          "type": "anchorJump",
+          "value": "idlink"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "anchorJump",
+          "value": "pflink"
+        },
+        "falseActions": []
+      },
+      "id": 1720709281181
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1720709315607
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "idlink"
+      },
+      "id": 1720709321652
+    },
+    {
+      "name": "Split Text",
+      "file": "splitText.js",
+      "data": {
+        "name": "Split Text",
+        "text": "${tempVars('steamlinkurl')}",
+        "split": {
+          "type": "text_after",
+          "value": "/id/"
+        },
+        "store": {
+          "type": "temporary",
+          "value": "idslash"
+        }
+      },
+      "id": 1720709330929
+    },
+    {
+      "name": "Split Text",
+      "file": "splitText.js",
+      "data": {
+        "name": "Split Text",
+        "text": "${tempVars('idslash')}",
+        "split": {
+          "type": "text_before",
+          "value": "/"
+        },
+        "store": {
+          "type": "temporary",
+          "value": "vanity"
+        }
+      },
+      "id": 1720709359516
+    },
+    {
+      "name": "Get JSON From WebAPI",
+      "file": "getJSONFromWebAPI.js",
+      "data": {
+        "name": "Get JSON From WebAPI",
+        "url": "https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key=${tempVars('steamapikey')}&vanityurl=${tempVars('vanity')}&url_type=1",
+        "headers": "",
+        "store": {
+          "type": "temporary",
+          "value": "steamapians"
+        }
+      },
+      "id": 1720709375020
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "steamid"
+        },
+        "value": "${tempVars('steamapians').response.steamid}"
+      },
+      "id": 1720709549463
+    },
+    {
+      "name": "Jump To Anchor",
+      "file": "jumpToAnchor.js",
+      "data": {
+        "name": "Jump To Anchor",
+        "id": "checkandmessage"
+      },
+      "id": 1720709601344
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1720709621336
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "pflink"
+      },
+      "id": 1720709627875
+    },
+    {
+      "name": "Split Text",
+      "file": "splitText.js",
+      "data": {
+        "name": "Split Text",
+        "text": "${tempVars('steamlinkurl')}",
+        "split": {
+          "type": "text_after",
+          "value": "/profiles/"
+        },
+        "store": {
+          "type": "temporary",
+          "value": "idslash"
+        }
+      },
+      "id": 1720709637366
+    },
+    {
+      "name": "Split Text",
+      "file": "splitText.js",
+      "data": {
+        "name": "Split Text",
+        "text": "${tempVars('idslash')}",
+        "split": {
+          "type": "text_before",
+          "value": "/"
+        },
+        "store": {
+          "type": "temporary",
+          "value": "profileid"
+        }
+      },
+      "id": 1720709663123
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "steamid"
+        },
+        "value": "${tempVars('profileid')}"
+      },
+      "id": 1720709674527
+    },
+    {
+      "name": "Jump To Anchor",
+      "file": "jumpToAnchor.js",
+      "data": {
+        "name": "Jump To Anchor",
+        "id": "checkandmessage"
+      },
+      "id": 1720709720463
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1720710629987
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "checkandmessage"
+      },
+      "id": 1720710196187
+    },
+    {
+      "name": "Get All Users Data Data",
+      "file": "getUserDataData.js",
+      "data": {
+        "name": "Get All Users Data Data",
+        "store": {
+          "type": "temporary",
+          "value": "registeredids"
+        }
+      },
+      "id": 1720709726047
+    },
+    {
+      "name": "Check If Text Includes",
+      "file": "checkIfTextIncludes.js",
+      "data": {
+        "name": "Check If Text Includes",
+        "string": "${JSON.stringify(tempVars('registeredids'))}",
+        "includes": "${tempVars('steamid')}",
+        "true": {
+          "type": "anchorJump",
+          "value": "steamlinkerror"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1720709764237
+    },
+    {
+      "name": "Get JSON From WebAPI",
+      "file": "getJSONFromWebAPI.js",
+      "data": {
+        "name": "Get JSON From WebAPI",
+        "url": "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${tempVars('steamapikey')}&steamids=${tempVars('steamid')}",
+        "headers": "",
+        "store": {
+          "type": "temporary",
+          "value": "summary"
+        }
+      },
+      "id": 1720709809910
+    },
+    {
+      "name": "Check If Text Starts With",
+      "file": "checkIfTextStartsWith.js",
+      "data": {
+        "name": "Check If Text Starts With",
+        "string": "${tempVars('summary').response.players[0].steamid}",
+        "startsWith": "765611",
+        "true": {
+          "type": "continue",
+          "value": ""
+        },
+        "trueActions": [],
+        "false": {
+          "type": "anchorJump",
+          "value": "steamlinkerror"
+        },
+        "falseActions": []
+      },
+      "id": 1720709916631
+    },
+    {
+      "name": "Control User Data",
+      "file": "controlUserData.js",
+      "data": {
+        "name": "Control User Data",
+        "source": {
+          "type": "string",
+          "value": ""
+        },
+        "user": {
+          "type": "author",
+          "value": ""
+        },
+        "dataName": "steamid",
+        "control": "Overwrite",
+        "controlValue": "${tempVars('summary').response.players[0].steamid}"
+      },
+      "id": 1720709994776
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "steam-link",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "${tempVars('summary').response.players[0].avatarfull}",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "",
+              "fields": [
+                {
+                  "type": "field",
+                  "data": {
+                    "title": "Steam Display Name",
+                    "value": "${tempVars('summary').response.players[0].personaname}",
+                    "inline": false
+                  }
+                },
+                {
+                  "type": "field",
+                  "data": {
+                    "title": "Discord ID",
+                    "value": "${command.author.id}",
+                    "inline": false
+                  }
+                },
+                {
+                  "type": "field",
+                  "data": {
+                    "title": "Steam64 ID",
+                    "value": "${tempVars('summary').response.players[0].steamid}",
+                    "inline": false
+                  }
+                },
+                {
+                  "type": "field",
+                  "data": {
+                    "title": "Status",
+                    "value": "Linked",
+                    "inline": false
+                  }
+                }
+              ],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        }
+      },
+      "id": 1720710034624
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1720710257912
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "steamlinkerror"
+      },
+      "id": 1720710264774
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "steam-link",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "An error occured...\nPossible errors:\n- Steam64 ID is already linked to a different user\n- Steam64 ID is abnormal\n- Steam profile link is wrongly formatted\n- You've already registered a Steam64 ID",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        }
+      },
+      "id": 1720710282063
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1720710441720
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "apikeyerror"
+      },
+      "id": 1720710487391
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "steam-link",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "An error occured...\nPossible errors:\n- You havn't set a Steam API key\n\nYou can get a Steam API key at https://steamcommunity.com/dev/apikey",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        }
+      },
+      "id": 1720710629988
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1720710629989
+    }
+  ],
+  "customId": 1720708854018,
+  "boundary": {
+    "worksIn": "guild",
+    "limits": []
+  },
+  "parameters": [
+    {
+      "name": "url",
+      "type": "string",
+      "description": "Steam profile url",
+      "required": true,
+      "choices": [],
+      "storeAs": "steamlinkurl",
+      "completion": false
+    }
+  ],
+  "description": "Links a SteamID to a Discord ID",
+  "folder": []
+}
+    
