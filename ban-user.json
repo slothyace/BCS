@@ -1,0 +1,336 @@
+    {
+  "name": "ban-user",
+  "type": "action",
+  "trigger": "slashCommand",
+  "actions": [
+    {
+      "name": "Check If Text Starts With",
+      "file": "checkIfTextStartsWith.js",
+      "data": {
+        "name": "Check If Text Starts With",
+        "string": "${tempVars('ctreason')}",
+        "startsWith": "undefined",
+        "true": {
+          "type": "runActions",
+          "value": ""
+        },
+        "trueActions": [
+          {
+            "name": "Control Variable",
+            "file": "controlVariable.js",
+            "data": {
+              "name": "Control Variable",
+              "variable": {
+                "type": "tempVar",
+                "value": "ctreason"
+              },
+              "control": "Set Value",
+              "value": "No reason was provided"
+            },
+            "id": 1721454213687
+          }
+        ],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1721454033474
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "ctuser"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "<@[0-9]+>",
+        "true": {
+          "type": "anchorJump",
+          "value": "bantypeuser"
+        },
+        "trueActions": [
+          {
+            "name": "Send Message",
+            "file": "sendmessage.js",
+            "data": {
+              "name": "Send Message",
+              "messageContent": "type: user",
+              "actionRows": [],
+              "embeds": [],
+              "channel": {
+                "type": "command",
+                "value": ""
+              },
+              "storeAs": {
+                "value": "",
+                "type": "temporary"
+              },
+              "replyToInteraction": true,
+              "options": [
+                {
+                  "type": "options"
+                }
+              ]
+            },
+            "id": 1721453896752
+          }
+        ],
+        "false": {
+          "type": "anchorJump",
+          "value": "bantypeuid"
+        },
+        "falseActions": [
+          {
+            "name": "Send Message",
+            "file": "sendmessage.js",
+            "data": {
+              "name": "Send Message",
+              "messageContent": "Type: uid",
+              "actionRows": [],
+              "embeds": [],
+              "channel": {
+                "type": "command",
+                "value": ""
+              },
+              "storeAs": {
+                "value": "",
+                "type": "temporary"
+              },
+              "replyToInteraction": true,
+              "options": [
+                {
+                  "type": "options"
+                }
+              ]
+            },
+            "id": 1721453903803
+          }
+        ]
+      },
+      "id": 1721453698025
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1721453986326
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "bantypeuser"
+      },
+      "id": 1721453993679
+    },
+    {
+      "name": "Ban Member",
+      "file": "banMember.js",
+      "data": {
+        "name": "Ban Member",
+        "member": {
+          "type": "tempVar",
+          "value": "ctuser"
+        },
+        "reason": "${tempVars('ctreason')}",
+        "deleteHistory": {
+          "type": "none",
+          "value": ""
+        }
+      },
+      "id": 1721454013195
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "ban-user",
+              "embedColor": "#FFFFFF",
+              "footerContent": "Type: User",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "${tempVars('ctuser')} has been banned.\nReason: ${tempVars('ctreason')}",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": false,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721454090754
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1721454142110
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "bantypeuid"
+      },
+      "id": 1721454178473
+    },
+    {
+      "name": "Ban Member",
+      "file": "banMember.js",
+      "data": {
+        "name": "Ban Member",
+        "member": {
+          "type": "id",
+          "value": "ctuser"
+        },
+        "reason": "${tempVars('ctreason')}",
+        "deleteHistory": {
+          "type": "none",
+          "value": ""
+        }
+      },
+      "id": 1721454267722
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "ban-user",
+              "embedColor": "#FFFFFF",
+              "footerContent": "Type: UID",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "<@${tempVars('ctuser')}> has been banned.\nReason: ${tempVars('ctreason')}",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": false,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721454267723
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1721454267724
+    }
+  ],
+  "customId": 1721453692838,
+  "boundary": {
+    "worksIn": "guild",
+    "limits": []
+  },
+  "parameters": [
+    {
+      "name": "user",
+      "type": "string",
+      "description": "Which user to ban?",
+      "required": true,
+      "choices": [],
+      "storeAs": "ctuser",
+      "completion": false
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "description": "Why?",
+      "required": false,
+      "choices": [],
+      "storeAs": "ctreason",
+      "completion": false
+    }
+  ],
+  "description": "No Description",
+  "folder": []
+}
+    
