@@ -116,7 +116,7 @@
                           },
                           "value": "${tempVars('apians').items[0].id.videoId}"
                         },
-                        "id": 1721454614588
+                        "id": 1721493588861
                       },
                       {
                         "name": "Create Variable",
@@ -129,7 +129,7 @@
                           },
                           "value": "${tempVars('apians').items[0].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614589
+                        "id": 1721493588862
                       },
                       {
                         "name": "Create Variable",
@@ -142,7 +142,7 @@
                           },
                           "value": "${tempVars('apians').items[0].snippet.title}"
                         },
-                        "id": 1721454614590
+                        "id": 1721493588863
                       },
                       {
                         "name": "Jump To Anchor",
@@ -151,7 +151,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614591
+                        "id": 1721493588864
                       }
                     ],
                     "disabled": false,
@@ -183,7 +183,7 @@
                           },
                           "value": "${tempVars('apians').items[1].id.videoId}"
                         },
-                        "id": 1721454614592
+                        "id": 1721493588865
                       },
                       {
                         "name": "Create Variable",
@@ -196,7 +196,7 @@
                           },
                           "value": "${tempVars('apians').items[1].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614593
+                        "id": 1721493588866
                       },
                       {
                         "name": "Create Variable",
@@ -209,7 +209,7 @@
                           },
                           "value": "${tempVars('apians').items[1].snippet.title}"
                         },
-                        "id": 1721454614594
+                        "id": 1721493588867
                       },
                       {
                         "name": "Jump To Anchor",
@@ -218,7 +218,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614595
+                        "id": 1721493588868
                       }
                     ],
                     "disabled": false,
@@ -250,7 +250,7 @@
                           },
                           "value": "${tempVars('apians').items[2].id.videoId}"
                         },
-                        "id": 1721454614596
+                        "id": 1721493588869
                       },
                       {
                         "name": "Create Variable",
@@ -263,7 +263,7 @@
                           },
                           "value": "${tempVars('apians').items[2].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614597
+                        "id": 1721493588870
                       },
                       {
                         "name": "Create Variable",
@@ -276,7 +276,7 @@
                           },
                           "value": "${tempVars('apians').items[2].snippet.title}"
                         },
-                        "id": 1721454614598
+                        "id": 1721493588871
                       },
                       {
                         "name": "Jump To Anchor",
@@ -285,7 +285,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614599
+                        "id": 1721493588872
                       }
                     ],
                     "disabled": false,
@@ -317,7 +317,7 @@
                           },
                           "value": "${tempVars('apians').items[3].id.videoId}"
                         },
-                        "id": 1721454614600
+                        "id": 1721493588873
                       },
                       {
                         "name": "Create Variable",
@@ -330,7 +330,7 @@
                           },
                           "value": "${tempVars('apians').items[3].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614601
+                        "id": 1721493588874
                       },
                       {
                         "name": "Create Variable",
@@ -343,7 +343,7 @@
                           },
                           "value": "${tempVars('apians').items[3].snippet.title}"
                         },
-                        "id": 1721454614602
+                        "id": 1721493588875
                       },
                       {
                         "name": "Jump To Anchor",
@@ -352,7 +352,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614603
+                        "id": 1721493588876
                       }
                     ],
                     "disabled": false,
@@ -384,7 +384,7 @@
                           },
                           "value": "${tempVars('apians').items[4].id.videoId}"
                         },
-                        "id": 1721454614604
+                        "id": 1721493588877
                       },
                       {
                         "name": "Create Variable",
@@ -397,7 +397,7 @@
                           },
                           "value": "${tempVars('apians').items[4].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614605
+                        "id": 1721493588878
                       },
                       {
                         "name": "Create Variable",
@@ -410,7 +410,7 @@
                           },
                           "value": "${tempVars('apians').items[4].snippet.title}"
                         },
-                        "id": 1721454614606
+                        "id": 1721493588879
                       },
                       {
                         "name": "Jump To Anchor",
@@ -419,7 +419,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614607
+                        "id": 1721493588880
                       }
                     ],
                     "disabled": false,
@@ -466,7 +466,7 @@
                           },
                           "value": "${tempVars('apians').items[5].id.videoId}"
                         },
-                        "id": 1721454614608
+                        "id": 1721493588881
                       },
                       {
                         "name": "Create Variable",
@@ -479,7 +479,7 @@
                           },
                           "value": "${tempVars('apians').items[5].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614609
+                        "id": 1721493588882
                       },
                       {
                         "name": "Create Variable",
@@ -492,7 +492,7 @@
                           },
                           "value": "${tempVars('apians').items[5].snippet.title}"
                         },
-                        "id": 1721454614610
+                        "id": 1721493588883
                       },
                       {
                         "name": "Jump To Anchor",
@@ -501,7 +501,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614611
+                        "id": 1721493588884
                       }
                     ],
                     "disabled": false,
@@ -533,7 +533,7 @@
                           },
                           "value": "${tempVars('apians').items[6].id.videoId}"
                         },
-                        "id": 1721454614612
+                        "id": 1721493588885
                       },
                       {
                         "name": "Create Variable",
@@ -546,7 +546,7 @@
                           },
                           "value": "${tempVars('apians').items[6].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614613
+                        "id": 1721493588886
                       },
                       {
                         "name": "Create Variable",
@@ -559,7 +559,7 @@
                           },
                           "value": "${tempVars('apians').items[6].snippet.title}"
                         },
-                        "id": 1721454614614
+                        "id": 1721493588887
                       },
                       {
                         "name": "Jump To Anchor",
@@ -568,7 +568,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614615
+                        "id": 1721493588888
                       }
                     ],
                     "disabled": false,
@@ -600,7 +600,7 @@
                           },
                           "value": "${tempVars('apians').items[7].id.videoId}"
                         },
-                        "id": 1721454614616
+                        "id": 1721493588889
                       },
                       {
                         "name": "Create Variable",
@@ -613,7 +613,7 @@
                           },
                           "value": "${tempVars('apians').items[7].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614617
+                        "id": 1721493588890
                       },
                       {
                         "name": "Create Variable",
@@ -626,7 +626,7 @@
                           },
                           "value": "${tempVars('apians').items[7].snippet.title}"
                         },
-                        "id": 1721454614618
+                        "id": 1721493588891
                       },
                       {
                         "name": "Jump To Anchor",
@@ -635,7 +635,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614619
+                        "id": 1721493588892
                       }
                     ],
                     "disabled": false,
@@ -667,7 +667,7 @@
                           },
                           "value": "${tempVars('apians').items[8].id.videoId}"
                         },
-                        "id": 1721454614620
+                        "id": 1721493588893
                       },
                       {
                         "name": "Create Variable",
@@ -680,7 +680,7 @@
                           },
                           "value": "${tempVars('apians').items[8].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614621
+                        "id": 1721493588894
                       },
                       {
                         "name": "Create Variable",
@@ -693,7 +693,7 @@
                           },
                           "value": "${tempVars('apians').items[8].snippet.title}"
                         },
-                        "id": 1721454614622
+                        "id": 1721493588895
                       },
                       {
                         "name": "Jump To Anchor",
@@ -702,7 +702,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614623
+                        "id": 1721493588896
                       }
                     ],
                     "disabled": false,
@@ -734,7 +734,7 @@
                           },
                           "value": "${tempVars('apians').items[9].id.videoId}"
                         },
-                        "id": 1721454614624
+                        "id": 1721493588897
                       },
                       {
                         "name": "Create Variable",
@@ -747,7 +747,7 @@
                           },
                           "value": "${tempVars('apians').items[9].snippet.thumbnails.high.url}"
                         },
-                        "id": 1721454614625
+                        "id": 1721493588898
                       },
                       {
                         "name": "Create Variable",
@@ -760,7 +760,7 @@
                           },
                           "value": "${tempVars('apians').items[9].snippet.title}"
                         },
-                        "id": 1721454614626
+                        "id": 1721493588899
                       },
                       {
                         "name": "Jump To Anchor",
@@ -769,7 +769,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1721454614627
+                        "id": 1721493588900
                       }
                     ],
                     "disabled": false,
@@ -808,7 +808,7 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "1 - ${tempVars('apians').items[0].snippet.title}\n2 - ${tempVars('apians').items[1].snippet.title}\n3 - ${tempVars('apians').items[2].snippet.title}\n4 - ${tempVars('apians').items[3].snippet.title}\n5 - ${tempVars('apians').items[4].snippet.title}\n6 - ${tempVars('apians').items[5].snippet.title}\n7 - ${tempVars('apians').items[6].snippet.title}\n8 - ${tempVars('apians').items[7].snippet.title}\n9 - ${tempVars('apians').items[8].snippet.title}\n10 - ${tempVars('apians').items[9].snippet.title}",
+              "description": "***:mag: Search results:***\n1 - ${tempVars('apians').items[0].snippet.title}\n2 - ${tempVars('apians').items[1].snippet.title}\n3 - ${tempVars('apians').items[2].snippet.title}\n4 - ${tempVars('apians').items[3].snippet.title}\n5 - ${tempVars('apians').items[4].snippet.title}\n6 - ${tempVars('apians').items[5].snippet.title}\n7 - ${tempVars('apians').items[6].snippet.title}\n8 - ${tempVars('apians').items[7].snippet.title}\n9 - ${tempVars('apians').items[8].snippet.title}\n10 - ${tempVars('apians').items[9].snippet.title}",
               "fields": [],
               "url": "",
               "timestamp": "Current",
@@ -886,7 +886,7 @@
           {
             "type": "embed",
             "data": {
-              "title": "",
+              "title": "play-improved",
               "embedColor": "#FFFFFF",
               "footerContent": "",
               "imageURL": "",
@@ -894,7 +894,7 @@
               "thumbnailURL": "${tempVars('impvsongthumb')}",
               "authorName": "",
               "authorIcon": "",
-              "description": "Now playing:\n[${tempVars('impvsongtitle')}](https://www.youtube.com/watch?v=${tempVars('impvsongid')})",
+              "description": "***:musical_note: Now playing:***\n[${tempVars('impvsongtitle')}](https://www.youtube.com/watch?v=${tempVars('impvsongid')})",
               "fields": [],
               "url": "",
               "timestamp": "Current",
