@@ -1,0 +1,1035 @@
+    {
+  "name": "play-improved",
+  "type": "action",
+  "trigger": "slashCommand",
+  "actions": [
+    {
+      "name": "Check If Member",
+      "file": "checkIfMember.js",
+      "data": {
+        "name": "Check If Member",
+        "member": {
+          "type": "author",
+          "value": ""
+        },
+        "check": "Is In Voice Channel?",
+        "true": {
+          "type": "continue",
+          "value": ""
+        },
+        "trueActions": [],
+        "false": {
+          "type": "anchorJump",
+          "value": "impvvcerror"
+        },
+        "falseActions": []
+      },
+      "id": 1721413120203
+    },
+    {
+      "name": "Get Member Info",
+      "file": "getMemberInfo.js",
+      "data": {
+        "name": "Get Member Info",
+        "member": {
+          "type": "author",
+          "value": ""
+        },
+        "get": {
+          "type": "voiceChannel",
+          "value": ""
+        },
+        "store": {
+          "type": "temporary",
+          "value": "impvuservc"
+        }
+      },
+      "id": 1721413164147
+    },
+    {
+      "name": "Replace",
+      "file": "replace.js",
+      "data": {
+        "name": "Replace",
+        "input": "${tempVars('impvsearch')}",
+        "replace": " ",
+        "with": "%20",
+        "store": {
+          "type": "temporary",
+          "value": "impvsearchparsed"
+        }
+      },
+      "id": 1721410570828
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "ytapikey"
+        },
+        "value": ""
+      },
+      "id": 1721410607600
+    },
+    {
+      "name": "Get JSON From WebAPI",
+      "file": "getJSONFromWebAPI.js",
+      "data": {
+        "name": "Get JSON From WebAPI",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${tempVars('impvsearchparsed')}&alt=json&key=${tempVars('ytapikey')}",
+        "headers": "",
+        "store": {
+          "type": "temporary",
+          "value": "apians"
+        }
+      },
+      "id": 1721410836047
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [
+          {
+            "type": "buttons",
+            "data": {
+              "buttons": [
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "1",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[0].id.videoId}"
+                        },
+                        "id": 1721493588861
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[0].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588862
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[0].snippet.title}"
+                        },
+                        "id": 1721493588863
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588864
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "2",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[1].id.videoId}"
+                        },
+                        "id": 1721493588865
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[1].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588866
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[1].snippet.title}"
+                        },
+                        "id": 1721493588867
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588868
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "3",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[2].id.videoId}"
+                        },
+                        "id": 1721493588869
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[2].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588870
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[2].snippet.title}"
+                        },
+                        "id": 1721493588871
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588872
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "4",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[3].id.videoId}"
+                        },
+                        "id": 1721493588873
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[3].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588874
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[3].snippet.title}"
+                        },
+                        "id": 1721493588875
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588876
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "5",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[4].id.videoId}"
+                        },
+                        "id": 1721493588877
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[4].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588878
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[4].snippet.title}"
+                        },
+                        "id": 1721493588879
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588880
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                }
+              ],
+              "storeInteractionAs": {
+                "type": "temporary",
+                "value": ""
+              },
+              "storeInteractionAuthorAs": {
+                "type": "temporary",
+                "value": ""
+              }
+            }
+          },
+          {
+            "type": "buttons",
+            "data": {
+              "buttons": [
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "6",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[5].id.videoId}"
+                        },
+                        "id": 1721493588881
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[5].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588882
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[5].snippet.title}"
+                        },
+                        "id": 1721493588883
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588884
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "7",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[6].id.videoId}"
+                        },
+                        "id": 1721493588885
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[6].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588886
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[6].snippet.title}"
+                        },
+                        "id": 1721493588887
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588888
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "8",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[7].id.videoId}"
+                        },
+                        "id": 1721493588889
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[7].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588890
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[7].snippet.title}"
+                        },
+                        "id": 1721493588891
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588892
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "9",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[8].id.videoId}"
+                        },
+                        "id": 1721493588893
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[8].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588894
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[8].snippet.title}"
+                        },
+                        "id": 1721493588895
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588896
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                },
+                {
+                  "type": "normal",
+                  "data": {
+                    "label": "10",
+                    "color": "Default",
+                    "actions": [
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongid"
+                          },
+                          "value": "${tempVars('apians').items[9].id.videoId}"
+                        },
+                        "id": 1721493588897
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongthumb"
+                          },
+                          "value": "${tempVars('apians').items[9].snippet.thumbnails.high.url}"
+                        },
+                        "id": 1721493588898
+                      },
+                      {
+                        "name": "Create Variable",
+                        "file": "createVariable.js",
+                        "data": {
+                          "name": "Create Variable",
+                          "variable": {
+                            "type": "temporary",
+                            "value": "impvsongtitle"
+                          },
+                          "value": "${tempVars('apians').items[9].snippet.title}"
+                        },
+                        "id": 1721493588899
+                      },
+                      {
+                        "name": "Jump To Anchor",
+                        "file": "jumpToAnchor.js",
+                        "data": {
+                          "name": "Jump To Anchor",
+                          "id": "impvplay"
+                        },
+                        "id": 1721493588900
+                      }
+                    ],
+                    "disabled": false,
+                    "emojiName": "",
+                    "emojiID": "",
+                    "isEmojiAnimated": false,
+                    "type": {
+                      "type": "temporary",
+                      "value": "30"
+                    },
+                    "customID": "Auto Generated",
+                    "id": ""
+                  }
+                }
+              ],
+              "storeInteractionAs": {
+                "type": "temporary",
+                "value": ""
+              },
+              "storeInteractionAuthorAs": {
+                "type": "temporary",
+                "value": ""
+              }
+            }
+          }
+        ],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "play-improved",
+              "embedColor": "#FFFFFF",
+              "footerContent": "Please choose an option within 30s",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "***:mag: Search results:***\n1 - ${tempVars('apians').items[0].snippet.title}\n2 - ${tempVars('apians').items[1].snippet.title}\n3 - ${tempVars('apians').items[2].snippet.title}\n4 - ${tempVars('apians').items[3].snippet.title}\n5 - ${tempVars('apians').items[4].snippet.title}\n6 - ${tempVars('apians').items[5].snippet.title}\n7 - ${tempVars('apians').items[6].snippet.title}\n8 - ${tempVars('apians').items[7].snippet.title}\n9 - ${tempVars('apians').items[8].snippet.title}\n10 - ${tempVars('apians').items[9].snippet.title}",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "impvreply",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721411009575
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1721411257031
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "impvplay"
+      },
+      "id": 1721411263536
+    },
+    {
+      "name": "Delete Message",
+      "file": "deleteMessage.js",
+      "data": {
+        "name": "Delete Message",
+        "message": {
+          "type": "tempVar",
+          "value": "impvreply"
+        }
+      },
+      "id": 1721413938118
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "play-improved",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "${tempVars('impvsongthumb')}",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "***:musical_note: Now playing:***\n[${tempVars('impvsongtitle')}](https://www.youtube.com/watch?v=${tempVars('impvsongid')})",
+              "fields": [],
+              "url": "",
+              "timestamp": "Current",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": false,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": false,
+        "updateMessage": {
+          "type": "none",
+          "value": "impvreply"
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721413218150
+    },
+    {
+      "name": "Join Voice Channel",
+      "file": "joinVoiceChannel.js",
+      "data": {
+        "name": "Join Voice Channel",
+        "channel": {
+          "type": "tempVar",
+          "value": "impvuservc"
+        }
+      },
+      "id": 1721412735949
+    },
+    {
+      "name": "Play YouTube Song",
+      "file": "playYT.js",
+      "data": {
+        "name": "Play YouTube Song",
+        "url": "https://www.youtube.com/watch?v=${tempVars('impvsongid')}",
+        "queuing": "Don't Queue, Just Play",
+        "queuePosition": "",
+        "quality": "Default",
+        "memoryAllocation": "Default"
+      },
+      "id": 1721413190014
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1721413761439
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "impvvcerror"
+      },
+      "id": 1721413837466
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "You're not in a voice channel!",
+        "actionRows": [],
+        "embeds": [],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1721413858649
+    }
+  ],
+  "customId": 1721403233097,
+  "boundary": {
+    "worksIn": "guild",
+    "limits": []
+  },
+  "parameters": [
+    {
+      "name": "search",
+      "type": "string",
+      "description": "Youtube search term",
+      "required": true,
+      "choices": [],
+      "storeAs": "impvsearch",
+      "completion": false
+    }
+  ],
+  "description": "No Description",
+  "folder": []
+}
+    
