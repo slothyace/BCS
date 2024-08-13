@@ -76,7 +76,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(second|sec|s|Seconds|Sec|S|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Ss][A-Za-z]*",
         "true": {
           "type": "anchorJump",
           "value": "unitsec"
@@ -100,7 +100,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(minute|min|m|Minute|Min|M|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Mm][A-Za-z]*",
         "true": {
           "type": "anchorJump",
           "value": "unitmin"
@@ -124,7 +124,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(hour|hr|h|Hour|Hr|H|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Hh][A-Za-z]*",
         "true": {
           "type": "anchorJump",
           "value": "unithour"
@@ -148,7 +148,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(Day|D|day|d|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Dd][A-Za-z]*",
         "true": {
           "type": "anchorJump",
           "value": "unitday"
