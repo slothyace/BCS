@@ -76,7 +76,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(second|sec|s|Second|Sec|S|SEC|SECOND|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Ss][Ee]?[Cc]?[Oo]?[Nn]?[Dd]?[Ss]?",
         "true": {
           "type": "anchorJump",
           "value": "unitsec"
@@ -100,7 +100,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(minute|min|m|Minute|Min|M|MINUTE|MIN|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Mm][Ii]?[Nn]?[Uu]?[Tt]?[Ee]?[Ss]?",
         "true": {
           "type": "anchorJump",
           "value": "unitmin"
@@ -124,7 +124,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(hour|hr|h|Hour|Hr|HOUR|HR|H|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Hh][Oo]?[Uu]?[Rr]?[Ss]?",
         "true": {
           "type": "anchorJump",
           "value": "unithour"
@@ -148,7 +148,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(Day|D|day|d|DAY|$)[Ss]?",
+        "compareValue": "[0-9]+ ?[Dd][Aa]?[Yy]?[Ss]?",
         "true": {
           "type": "anchorJump",
           "value": "unitday"
