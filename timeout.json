@@ -1,0 +1,1321 @@
+    {
+  "name": "tm",
+  "type": "action",
+  "trigger": "slashCommand",
+  "actions": [
+    {
+      "name": "Clone Variable",
+      "file": "cloneVariable.js",
+      "data": {
+        "name": "Clone Variable",
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "store": {
+          "type": "temporary",
+          "value": "timeoutdurationclone"
+        }
+      },
+      "id": 1723571579188
+    },
+    {
+      "name": "Get Global Data",
+      "file": "getGlobalData.js",
+      "data": {
+        "name": "Get Global Data",
+        "dataName": "timeoutcommandsetup",
+        "defaultValue": "0",
+        "store": {
+          "type": "temporary",
+          "value": "timeoutcommandsetup"
+        }
+      },
+      "id": 1723575160851
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutcommandsetup"
+        },
+        "comparator": "Equals",
+        "compareValue": "0",
+        "true": {
+          "type": "runActions",
+          "value": ""
+        },
+        "trueActions": [
+          {
+            "name": "Create List",
+            "file": "createList.js",
+            "data": {
+              "name": "Create List",
+              "list": {
+                "type": "server",
+                "value": "pasttimeoutdurationlist"
+              }
+            },
+            "id": 1723575639593
+          },
+          {
+            "name": "Create List",
+            "file": "createList.js",
+            "data": {
+              "name": "Create List",
+              "list": {
+                "type": "server",
+                "value": "pasttimeoutreasonlist"
+              }
+            },
+            "id": 1723575639594
+          }
+        ],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1723575197128
+    },
+    {
+      "name": "Check Member Permission",
+      "file": "checkMemberPermissions.js",
+      "data": {
+        "name": "Check Member Permission",
+        "member": {
+          "type": "tempVar",
+          "value": "timeoutmember"
+        },
+        "permission": "Mute Members",
+        "true": {
+          "type": "anchorJump",
+          "value": "timeoutpermerror"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1723575269021
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?(second|sec|s|Seconds|Sec|S|$)[Ss]?",
+        "true": {
+          "type": "anchorJump",
+          "value": "unitsec"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1723570156566
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?(minute|min|m|Minute|Min|M|$)[Ss]?",
+        "true": {
+          "type": "anchorJump",
+          "value": "unitmin"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1723570351131
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?(hour|hr|h|Hour|Hr|H|$)[Ss]?",
+        "true": {
+          "type": "anchorJump",
+          "value": "unithour"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1723570349474
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?(Day|D|day|d|$)[Ss]?",
+        "true": {
+          "type": "anchorJump",
+          "value": "unitday"
+        },
+        "trueActions": [],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1723570349142
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "tm",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "Your duration formating is wrong, please try using this format:\n`<Number> <Unit>`\n\n-# Accepted Units: seconds, minutes, hours, days",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "storeAs": {
+          "type": "none",
+          "value": ""
+        },
+        "attachments": [],
+        "poll": [],
+        "replyToInteraction": true,
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1723570403744
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1723570474211
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "unitsec"
+      },
+      "id": 1723570480352
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?S",
+        "true": {
+          "type": "runActions",
+          "value": ""
+        },
+        "trueActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "S"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639595
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "S"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639596
+          }
+        ],
+        "false": {
+          "type": "runActions",
+          "value": ""
+        },
+        "falseActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "s"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639597
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "s"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639598
+          }
+        ]
+      },
+      "id": 1723574080672
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutdurationlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        }
+      },
+      "id": 1723574595131
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutreasonlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutreason"
+        }
+      },
+      "id": 1723574616824
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "timeoutunit"
+        },
+        "value": "second(s)"
+      },
+      "id": 1723574744679
+    },
+    {
+      "name": "Timeout Member",
+      "file": "timeoutMember.js",
+      "data": {
+        "name": "Timeout Member",
+        "member": {
+          "type": "tempVar",
+          "value": "timeoutmember"
+        },
+        "unitsOfTime": "Second(s)",
+        "timeoutDuration": "${tempVars('timeoutnumber')}",
+        "reason": "${tempVars('timeoutreason')}"
+      },
+      "id": 1723574391965
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "tm",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1723570538869
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1723574937140
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "unitmin"
+      },
+      "id": 1723574802407
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?M",
+        "true": {
+          "type": "runActions",
+          "value": ""
+        },
+        "trueActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "M"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639600
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "M"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639601
+          }
+        ],
+        "false": {
+          "type": "runActions",
+          "value": ""
+        },
+        "falseActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "m"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639602
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "m"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639603
+          }
+        ]
+      },
+      "id": 1723574802407
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutdurationlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        }
+      },
+      "id": 1723574802407
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutreasonlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutreason"
+        }
+      },
+      "id": 1723574802407
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "timeoutunit"
+        },
+        "value": "minute(s)"
+      },
+      "id": 1723574802407
+    },
+    {
+      "name": "Timeout Member",
+      "file": "timeoutMember.js",
+      "data": {
+        "name": "Timeout Member",
+        "member": {
+          "type": "tempVar",
+          "value": "timeoutmember"
+        },
+        "unitsOfTime": "Minute(s)",
+        "timeoutDuration": "${tempVars('timeoutnumber')}",
+        "reason": "${tempVars('timeoutreason')}"
+      },
+      "id": 1723574802407
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "tm",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1723574802407
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1723574959320
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "unithour"
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?H",
+        "true": {
+          "type": "runActions",
+          "value": ""
+        },
+        "trueActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "H"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639604
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "H"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639605
+          }
+        ],
+        "false": {
+          "type": "runActions",
+          "value": ""
+        },
+        "falseActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "h"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639606
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "h"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639607
+          }
+        ]
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutdurationlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        }
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutreasonlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutreason"
+        }
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "timeoutunit"
+        },
+        "value": "hour(s)"
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Timeout Member",
+      "file": "timeoutMember.js",
+      "data": {
+        "name": "Timeout Member",
+        "member": {
+          "type": "tempVar",
+          "value": "timeoutmember"
+        },
+        "unitsOfTime": "Hour(s)",
+        "timeoutDuration": "${tempVars('timeoutnumber')}",
+        "reason": "${tempVars('timeoutreason')}"
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "tm",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1723574965105
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "unitday"
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        },
+        "comparator": "Matches Regex",
+        "compareValue": "[0-9]+ ?D",
+        "true": {
+          "type": "runActions",
+          "value": ""
+        },
+        "trueActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "D"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639608
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "D"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639609
+          }
+        ],
+        "false": {
+          "type": "runActions",
+          "value": ""
+        },
+        "falseActions": [
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationclone')}",
+              "split": {
+                "type": "text_before",
+                "value": "d"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutdurationtrim"
+              }
+            },
+            "id": 1723575639610
+          },
+          {
+            "name": "Split Text",
+            "file": "splitText.js",
+            "data": {
+              "name": "Split Text",
+              "text": "${tempVars('timeoutdurationtrim')}",
+              "split": {
+                "type": "text_before",
+                "value": "d"
+              },
+              "store": {
+                "type": "temporary",
+                "value": "timeoutnumber"
+              }
+            },
+            "id": 1723575639611
+          }
+        ]
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutdurationlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutduration"
+        }
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Create List Element",
+      "file": "createListElement.js",
+      "data": {
+        "name": "Create List Element",
+        "list": {
+          "type": "serverVar",
+          "value": "pasttimeoutreasonlist"
+        },
+        "value": {
+          "type": "tempVar",
+          "value": "timeoutreason"
+        }
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Create Variable",
+      "file": "createVariable.js",
+      "data": {
+        "name": "Create Variable",
+        "variable": {
+          "type": "temporary",
+          "value": "timeoutunit"
+        },
+        "value": "day(s)"
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Timeout Member",
+      "file": "timeoutMember.js",
+      "data": {
+        "name": "Timeout Member",
+        "member": {
+          "type": "tempVar",
+          "value": "timeoutmember"
+        },
+        "unitsOfTime": "Day(s)",
+        "timeoutDuration": "${tempVars('timeoutnumber')}",
+        "reason": "${tempVars('timeoutreason')}"
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "tm",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1723575030184
+    },
+    {
+      "name": "Create Anchor",
+      "file": "createAnchor.js",
+      "data": {
+        "name": "Create Anchor",
+        "id": "timeoutpermerror"
+      },
+      "id": 1723575287006
+    },
+    {
+      "name": "Send Message",
+      "file": "sendmessage.js",
+      "data": {
+        "name": "Send Message",
+        "messageContent": "",
+        "actionRows": [],
+        "embeds": [
+          {
+            "type": "embed",
+            "data": {
+              "title": "tm",
+              "embedColor": "#FFFFFF",
+              "footerContent": "",
+              "imageURL": "",
+              "footerIconURL": "",
+              "thumbnailURL": "",
+              "authorName": "",
+              "authorIcon": "",
+              "description": "${tempVars('timeoutmember')} has permission to mute members and thus, can't be under timeout.",
+              "fields": [],
+              "url": "",
+              "timestamp": "None",
+              "customTimestamp": ""
+            }
+          }
+        ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
+        "options": [
+          {
+            "type": "options"
+          }
+        ],
+        "attachments": [],
+        "poll": [],
+        "mentions": false,
+        "dontSend": false,
+        "ephemeral": true,
+        "updateMessage": {
+          "type": "none",
+          "value": ""
+        },
+        "updateContent": false,
+        "updateComponents": false,
+        "updateEmbeds": false,
+        "updateAttachments": false
+      },
+      "id": 1723575308671
+    }
+  ],
+  "customId": 1723569958572,
+  "boundary": {
+    "worksIn": "guild",
+    "limits": [
+      "MUTE_MEMBERS"
+    ]
+  },
+  "parameters": [
+    {
+      "name": "member",
+      "type": "user",
+      "description": "Member to timeout",
+      "required": true,
+      "choices": [],
+      "storeAs": "timeoutmember",
+      "completion": false
+    },
+    {
+      "name": "duration",
+      "type": "string",
+      "description": "Timeout duration",
+      "required": true,
+      "choices": [],
+      "storeAs": "timeoutduration",
+      "completion": false,
+      "autocompletion": true,
+      "bound": {
+        "name": "Autocompletion",
+        "storeInputAs": {
+          "type": "temporary",
+          "value": "durationtext"
+        },
+        "storeInteractionAs": {
+          "type": "temporary",
+          "value": ""
+        },
+        "actions": [],
+        "result": {
+          "type": "serverVar",
+          "value": "pasttimeoutdurationlist"
+        }
+      }
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "description": "Timeout reason",
+      "required": false,
+      "choices": [],
+      "storeAs": "timeoutreason",
+      "completion": false,
+      "bound": {
+        "name": "Autocompletion",
+        "storeInputAs": {
+          "type": "temporary",
+          "value": "reasontext"
+        },
+        "storeInteractionAs": {
+          "type": "temporary",
+          "value": ""
+        },
+        "actions": [],
+        "result": {
+          "type": "serverVar",
+          "value": "pasttimeoutreasonlist"
+        }
+      },
+      "autocompletion": true
+    }
+  ],
+  "description": "Timeout a member",
+  "folder": []
+}
+    
