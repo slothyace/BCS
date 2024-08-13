@@ -76,7 +76,7 @@
           "value": "timeoutduration"
         },
         "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?(second|sec|s|Second|Sec|S|SEC|SECOND$)[Ss]?",
+        "compareValue": "[0-9]+ ?(second|sec|s|Second|Sec|S|SEC|SECOND|$)[Ss]?",
         "true": {
           "type": "anchorJump",
           "value": "unitsec"
