@@ -1,5 +1,5 @@
     {
-  "name": "tm",
+  "name": "timeout",
   "type": "action",
   "trigger": "slashCommand",
   "actions": [
@@ -20,67 +20,28 @@
       "id": 1723571579188
     },
     {
-      "name": "Get Global Data",
-      "file": "getGlobalData.js",
+      "name": "Create List",
+      "file": "createList.js",
       "data": {
-        "name": "Get Global Data",
-        "dataName": "timeoutcommandsetup",
-        "defaultValue": "0",
-        "store": {
-          "type": "temporary",
-          "value": "timeoutcommandsetup"
+        "name": "Create List",
+        "list": {
+          "type": "server",
+          "value": "pasttimeoutreasonlist"
         }
       },
-      "id": 1723575160851
+      "id": 1723576520858
     },
     {
-      "name": "Check Variable",
-      "file": "checkVariable.js",
+      "name": "Create List",
+      "file": "createList.js",
       "data": {
-        "name": "Check Variable",
-        "variable": {
-          "type": "tempVar",
-          "value": "timeoutcommandsetup"
-        },
-        "comparator": "Equals",
-        "compareValue": "0",
-        "true": {
-          "type": "runActions",
-          "value": ""
-        },
-        "trueActions": [
-          {
-            "name": "Create List",
-            "file": "createList.js",
-            "data": {
-              "name": "Create List",
-              "list": {
-                "type": "server",
-                "value": "pasttimeoutdurationlist"
-              }
-            },
-            "id": 1723575639593
-          },
-          {
-            "name": "Create List",
-            "file": "createList.js",
-            "data": {
-              "name": "Create List",
-              "list": {
-                "type": "server",
-                "value": "pasttimeoutreasonlist"
-              }
-            },
-            "id": 1723575639594
-          }
-        ],
-        "false": {
-          "type": "continue",
-          "value": ""
-        },
-        "falseActions": []
+        "name": "Create List",
+        "list": {
+          "type": "server",
+          "value": "pasttimeoutdurationlist"
+        }
       },
-      "id": 1723575197128
+      "id": 1723576621893
     },
     {
       "name": "Check Member Permission",
@@ -306,7 +267,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639595
+            "id": 1723576291854
           },
           {
             "name": "Split Text",
@@ -323,7 +284,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639596
+            "id": 1723576291855
           }
         ],
         "false": {
@@ -346,7 +307,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639597
+            "id": 1723576291856
           },
           {
             "name": "Split Text",
@@ -363,7 +324,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639598
+            "id": 1723576291857
           }
         ]
       },
@@ -487,6 +448,14 @@
       "id": 1723570538869
     },
     {
+      "name": "Save Variables",
+      "file": "saveVars.js",
+      "data": {
+        "name": "Save Variables"
+      },
+      "id": 1723576287393
+    },
+    {
       "name": "Stop Actions",
       "file": "stopRunningActions.js",
       "data": {
@@ -534,7 +503,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639600
+            "id": 1723576291858
           },
           {
             "name": "Split Text",
@@ -551,7 +520,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639601
+            "id": 1723576291859
           }
         ],
         "false": {
@@ -574,7 +543,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639602
+            "id": 1723576291860
           },
           {
             "name": "Split Text",
@@ -591,11 +560,11 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639603
+            "id": 1723576291861
           }
         ]
       },
-      "id": 1723574802407
+      "id": 1723575833532
     },
     {
       "name": "Create List Element",
@@ -611,7 +580,7 @@
           "value": "timeoutduration"
         }
       },
-      "id": 1723574802407
+      "id": 1723575833533
     },
     {
       "name": "Create List Element",
@@ -627,7 +596,7 @@
           "value": "timeoutreason"
         }
       },
-      "id": 1723574802407
+      "id": 1723575833534
     },
     {
       "name": "Create Variable",
@@ -640,7 +609,7 @@
         },
         "value": "minute(s)"
       },
-      "id": 1723574802407
+      "id": 1723575833535
     },
     {
       "name": "Timeout Member",
@@ -655,7 +624,7 @@
         "timeoutDuration": "${tempVars('timeoutnumber')}",
         "reason": "${tempVars('timeoutreason')}"
       },
-      "id": 1723574802407
+      "id": 1723575833536
     },
     {
       "name": "Send Message",
@@ -712,7 +681,15 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723574802407
+      "id": 1723575833537
+    },
+    {
+      "name": "Save Variables",
+      "file": "saveVars.js",
+      "data": {
+        "name": "Save Variables"
+      },
+      "id": 1723576296789
     },
     {
       "name": "Stop Actions",
@@ -762,7 +739,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639604
+            "id": 1723576291862
           },
           {
             "name": "Split Text",
@@ -779,7 +756,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639605
+            "id": 1723576291863
           }
         ],
         "false": {
@@ -802,7 +779,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639606
+            "id": 1723576291864
           },
           {
             "name": "Split Text",
@@ -819,11 +796,11 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639607
+            "id": 1723576291865
           }
         ]
       },
-      "id": 1723574965105
+      "id": 1723575833538
     },
     {
       "name": "Create List Element",
@@ -839,7 +816,7 @@
           "value": "timeoutduration"
         }
       },
-      "id": 1723574965105
+      "id": 1723575833539
     },
     {
       "name": "Create List Element",
@@ -855,7 +832,7 @@
           "value": "timeoutreason"
         }
       },
-      "id": 1723574965105
+      "id": 1723575833540
     },
     {
       "name": "Create Variable",
@@ -868,7 +845,7 @@
         },
         "value": "hour(s)"
       },
-      "id": 1723574965105
+      "id": 1723575833541
     },
     {
       "name": "Timeout Member",
@@ -883,7 +860,7 @@
         "timeoutDuration": "${tempVars('timeoutnumber')}",
         "reason": "${tempVars('timeoutreason')}"
       },
-      "id": 1723574965105
+      "id": 1723575833542
     },
     {
       "name": "Send Message",
@@ -940,7 +917,15 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723574965105
+      "id": 1723575833543
+    },
+    {
+      "name": "Save Variables",
+      "file": "saveVars.js",
+      "data": {
+        "name": "Save Variables"
+      },
+      "id": 1723576301146
     },
     {
       "name": "Stop Actions",
@@ -948,7 +933,7 @@
       "data": {
         "name": "Stop Actions"
       },
-      "id": 1723574965105
+      "id": 1723575833544
     },
     {
       "name": "Create Anchor",
@@ -990,7 +975,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639608
+            "id": 1723576291867
           },
           {
             "name": "Split Text",
@@ -1007,7 +992,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639609
+            "id": 1723576291868
           }
         ],
         "false": {
@@ -1030,7 +1015,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723575639610
+            "id": 1723576291869
           },
           {
             "name": "Split Text",
@@ -1047,11 +1032,11 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723575639611
+            "id": 1723576291870
           }
         ]
       },
-      "id": 1723575030184
+      "id": 1723575833545
     },
     {
       "name": "Create List Element",
@@ -1067,7 +1052,7 @@
           "value": "timeoutduration"
         }
       },
-      "id": 1723575030184
+      "id": 1723575833546
     },
     {
       "name": "Create List Element",
@@ -1083,7 +1068,7 @@
           "value": "timeoutreason"
         }
       },
-      "id": 1723575030184
+      "id": 1723575833547
     },
     {
       "name": "Create Variable",
@@ -1096,7 +1081,7 @@
         },
         "value": "day(s)"
       },
-      "id": 1723575030184
+      "id": 1723575833548
     },
     {
       "name": "Timeout Member",
@@ -1111,7 +1096,7 @@
         "timeoutDuration": "${tempVars('timeoutnumber')}",
         "reason": "${tempVars('timeoutreason')}"
       },
-      "id": 1723575030184
+      "id": 1723575833549
     },
     {
       "name": "Send Message",
@@ -1168,7 +1153,15 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723575030184
+      "id": 1723575833550
+    },
+    {
+      "name": "Save Variables",
+      "file": "saveVars.js",
+      "data": {
+        "name": "Save Variables"
+      },
+      "id": 1723576307203
     },
     {
       "name": "Stop Actions",
@@ -1176,7 +1169,7 @@
       "data": {
         "name": "Stop Actions"
       },
-      "id": 1723575030184
+      "id": 1723575833551
     },
     {
       "name": "Create Anchor",
