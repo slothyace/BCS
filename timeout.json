@@ -47,7 +47,7 @@
               "control": "Set Value",
               "value": "No reason provided."
             },
-            "id": 1723655662382
+            "id": 1723655903749
           }
         ],
         "false": {
@@ -289,7 +289,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662383
+            "id": 1723655903750
           },
           {
             "name": "Split Text",
@@ -306,7 +306,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662384
+            "id": 1723655903751
           }
         ],
         "false": {
@@ -329,7 +329,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662385
+            "id": 1723655903752
           },
           {
             "name": "Split Text",
@@ -346,7 +346,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662386
+            "id": 1723655903753
           }
         ]
       },
@@ -525,7 +525,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662388
+            "id": 1723655903754
           },
           {
             "name": "Split Text",
@@ -542,7 +542,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662389
+            "id": 1723655903755
           }
         ],
         "false": {
@@ -565,7 +565,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662390
+            "id": 1723655903756
           },
           {
             "name": "Split Text",
@@ -582,7 +582,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662391
+            "id": 1723655903757
           }
         ]
       },
@@ -761,7 +761,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662392
+            "id": 1723655903758
           },
           {
             "name": "Split Text",
@@ -778,7 +778,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662393
+            "id": 1723655903759
           }
         ],
         "false": {
@@ -801,7 +801,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662394
+            "id": 1723655903760
           },
           {
             "name": "Split Text",
@@ -818,7 +818,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662395
+            "id": 1723655903761
           }
         ]
       },
@@ -997,7 +997,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662396
+            "id": 1723655903762
           },
           {
             "name": "Split Text",
@@ -1014,7 +1014,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662397
+            "id": 1723655903763
           }
         ],
         "false": {
@@ -1037,7 +1037,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723655662398
+            "id": 1723655903764
           },
           {
             "name": "Split Text",
@@ -1054,7 +1054,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723655662399
+            "id": 1723655903765
           }
         ]
       },
@@ -1221,7 +1221,7 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "${tempVars('timeoutmember')} has permission to mute members and thus, can't be under timeout.\nReason: ${tempVars('timeoutreason')}",
+              "description": "${tempVars('timeoutmember')} has permission to mute members and thus, can't be under timeout.",
               "fields": [],
               "url": "",
               "timestamp": "Current",
