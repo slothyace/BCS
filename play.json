@@ -169,7 +169,7 @@
               },
               "noResultsActions": []
             },
-            "id": 1721493519652
+            "id": 1723370903434
           },
           {
             "name": "YouTube Video Search",
@@ -190,7 +190,7 @@
               },
               "noResultsActions": []
             },
-            "id": 1721493519653
+            "id": 1723370903435
           },
           {
             "name": "YouTube Video Search",
@@ -211,7 +211,7 @@
               },
               "noResultsActions": []
             },
-            "id": 1721493519654
+            "id": 1723370903436
           },
           {
             "name": "Create List Element",
@@ -227,7 +227,7 @@
                 "value": "fetchtitle"
               }
             },
-            "id": 1721493519655
+            "id": 1723370903437
           },
           {
             "name": "Create List Element",
@@ -243,7 +243,7 @@
                 "value": "fetchid"
               }
             },
-            "id": 1721493519656
+            "id": 1723370903438
           },
           {
             "name": "Create List Element",
@@ -259,7 +259,7 @@
                 "value": "fetchthumb"
               }
             },
-            "id": 1721493519657
+            "id": 1723370903439
           }
         ]
       },
@@ -309,7 +309,7 @@
                 "value": "titlenump1"
               }
             },
-            "id": 1721493519658
+            "id": 1723370903440
           },
           {
             "name": "Create List Element",
@@ -325,7 +325,7 @@
                 "value": "[${tempVars('titlenump1')}] - ${tempVars('title')}"
               }
             },
-            "id": 1721493519659
+            "id": 1723370903441
           }
         ]
       },
@@ -361,18 +361,6 @@
       "id": 1721387234775
     },
     {
-      "name": "Join Voice Channel",
-      "file": "joinVoiceChannel.js",
-      "data": {
-        "name": "Join Voice Channel",
-        "channel": {
-          "type": "tempVar",
-          "value": "uservc"
-        }
-      },
-      "id": 1721388598835
-    },
-    {
       "name": "Send Message",
       "file": "sendmessage.js",
       "data": {
@@ -402,7 +390,7 @@
                           },
                           "value": "0"
                         },
-                        "id": 1721493519660
+                        "id": 1723370903442
                       },
                       {
                         "name": "Jump To Anchor",
@@ -411,7 +399,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519661
+                        "id": 1723370903443
                       }
                     ],
                     "label": "1",
@@ -438,7 +426,7 @@
                           },
                           "value": "1"
                         },
-                        "id": 1721493519662
+                        "id": 1723370903444
                       },
                       {
                         "name": "Jump To Anchor",
@@ -447,7 +435,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519663
+                        "id": 1723370903445
                       }
                     ],
                     "label": "2",
@@ -474,7 +462,7 @@
                           },
                           "value": "2"
                         },
-                        "id": 1721493519664
+                        "id": 1723370903446
                       },
                       {
                         "name": "Jump To Anchor",
@@ -483,7 +471,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519665
+                        "id": 1723370903447
                       }
                     ],
                     "label": "3",
@@ -510,7 +498,7 @@
                           },
                           "value": "3"
                         },
-                        "id": 1721493519666
+                        "id": 1723370903448
                       },
                       {
                         "name": "Jump To Anchor",
@@ -519,7 +507,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519667
+                        "id": 1723370903449
                       }
                     ],
                     "label": "4",
@@ -546,7 +534,7 @@
                           },
                           "value": "4"
                         },
-                        "id": 1721493519668
+                        "id": 1723370903450
                       },
                       {
                         "name": "Jump To Anchor",
@@ -555,7 +543,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519669
+                        "id": 1723370903451
                       }
                     ],
                     "label": "5",
@@ -582,7 +570,7 @@
                           },
                           "value": "5"
                         },
-                        "id": 1721493519670
+                        "id": 1723370903452
                       },
                       {
                         "name": "Jump To Anchor",
@@ -591,7 +579,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519671
+                        "id": 1723370903453
                       }
                     ],
                     "label": "6",
@@ -618,7 +606,7 @@
                           },
                           "value": "6"
                         },
-                        "id": 1721493519672
+                        "id": 1723370903454
                       },
                       {
                         "name": "Jump To Anchor",
@@ -627,7 +615,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519673
+                        "id": 1723370903455
                       }
                     ],
                     "label": "7",
@@ -654,7 +642,7 @@
                           },
                           "value": "7"
                         },
-                        "id": 1721493519674
+                        "id": 1723370903456
                       },
                       {
                         "name": "Jump To Anchor",
@@ -663,7 +651,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519675
+                        "id": 1723370903457
                       }
                     ],
                     "label": "8",
@@ -690,7 +678,7 @@
                           },
                           "value": "8"
                         },
-                        "id": 1721493519676
+                        "id": 1723370903458
                       },
                       {
                         "name": "Jump To Anchor",
@@ -699,7 +687,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519677
+                        "id": 1723370903459
                       }
                     ],
                     "label": "9",
@@ -726,7 +714,7 @@
                           },
                           "value": "9"
                         },
-                        "id": 1721493519678
+                        "id": 1723370903460
                       },
                       {
                         "name": "Jump To Anchor",
@@ -735,7 +723,7 @@
                           "name": "Jump To Anchor",
                           "id": "playmus"
                         },
-                        "id": 1721493519679
+                        "id": 1723370903461
                       }
                     ],
                     "label": "10",
@@ -1044,6 +1032,18 @@
       "id": 1721391608153
     },
     {
+      "name": "Join Voice Channel",
+      "file": "joinVoiceChannel.js",
+      "data": {
+        "name": "Join Voice Channel",
+        "channel": {
+          "type": "tempVar",
+          "value": "uservc"
+        }
+      },
+      "id": 1723390195942
+    },
+    {
       "name": "Play YouTube Song",
       "file": "playYT.js",
       "data": {
@@ -1052,7 +1052,8 @@
         "queuing": "Don't Queue, Just Play",
         "queuePosition": "",
         "quality": "Default",
-        "memoryAllocation": "Default"
+        "memoryAllocation": "Default",
+        "tokenGeneration": true
       },
       "id": 1721388962680
     }
