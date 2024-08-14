@@ -17,7 +17,46 @@
           "value": "timeoutdurationclone"
         }
       },
-      "id": 1723571579188
+      "id": 1723639529500
+    },
+    {
+      "name": "Check Variable",
+      "file": "checkVariable.js",
+      "data": {
+        "name": "Check Variable",
+        "variable": {
+          "type": "tempVar",
+          "value": "timeoutreason"
+        },
+        "comparator": "Equals",
+        "compareValue": "undefined",
+        "true": {
+          "type": "runActions",
+          "value": ""
+        },
+        "trueActions": [
+          {
+            "name": "Control Variable",
+            "file": "controlVariable.js",
+            "data": {
+              "name": "Control Variable",
+              "variable": {
+                "type": "tempVar",
+                "value": "timeoutreason"
+              },
+              "control": "Set Value",
+              "value": "No reason provided."
+            },
+            "id": 1723655662382
+          }
+        ],
+        "false": {
+          "type": "continue",
+          "value": ""
+        },
+        "falseActions": []
+      },
+      "id": 1723655374262
     },
     {
       "name": "Create List",
@@ -29,7 +68,7 @@
           "value": "pasttimeoutreasonlist"
         }
       },
-      "id": 1723576520858
+      "id": 1723639529501
     },
     {
       "name": "Create List",
@@ -41,7 +80,7 @@
           "value": "pasttimeoutdurationlist"
         }
       },
-      "id": 1723576621893
+      "id": 1723639529502
     },
     {
       "name": "Check Member Permission",
@@ -64,103 +103,86 @@
         },
         "falseActions": []
       },
-      "id": 1723575269021
+      "id": 1723639529503
     },
     {
-      "name": "Check Variable",
-      "file": "checkVariable.js",
+      "name": "Multiple Regex Comparisons",
+      "file": "multiRegexCompare.js",
       "data": {
-        "name": "Check Variable",
-        "variable": {
-          "type": "tempVar",
-          "value": "timeoutduration"
-        },
-        "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?[Ss][Ee]?[Cc]?[Oo]?[Nn]?[Dd]?[Ss]?",
-        "true": {
-          "type": "anchorJump",
-          "value": "unitsec"
-        },
-        "trueActions": [],
-        "false": {
-          "type": "continue",
-          "value": ""
-        },
-        "falseActions": []
+        "name": "Multiple Regex Comparisons",
+        "input": "${tempVars('timeoutduration')}",
+        "cases": [
+          {
+            "type": "comparison",
+            "data": {
+              "comparator": "Matches Regex",
+              "value": "[0-9]+ ?[Ss][Ee]?[Cc]?[Oo]?[Nn]?[Dd]?[Ss]?",
+              "true": {
+                "type": "anchorJump",
+                "value": "unitsec"
+              },
+              "trueActions": [],
+              "false": {
+                "type": "stop",
+                "value": ""
+              },
+              "falseActions": []
+            }
+          },
+          {
+            "type": "comparison",
+            "data": {
+              "comparator": "Matches Regex",
+              "value": "[0-9]+ ?[Mm][Ii]?[Nn]?[Uu]?[Tt]?[Ee]?[Ss]?",
+              "true": {
+                "type": "anchorJump",
+                "value": "unitmin"
+              },
+              "trueActions": [],
+              "false": {
+                "type": "stop",
+                "value": ""
+              },
+              "falseActions": []
+            }
+          },
+          {
+            "type": "comparison",
+            "data": {
+              "comparator": "Matches Regex",
+              "value": "[0-9]+ ?[Hh][Oo]?[Uu]?[Rr]?[Ss]?",
+              "true": {
+                "type": "anchorJump",
+                "value": "unithour"
+              },
+              "trueActions": [],
+              "false": {
+                "type": "stop",
+                "value": ""
+              },
+              "falseActions": []
+            }
+          },
+          {
+            "type": "comparison",
+            "data": {
+              "comparator": "Matches Regex",
+              "value": "[0-9]+ ?[Dd][Aa]?[Yy]?[Ss]?",
+              "true": {
+                "type": "anchorJump",
+                "value": "unitday"
+              },
+              "trueActions": [],
+              "false": {
+                "type": "continue",
+                "value": ""
+              },
+              "falseActions": []
+            }
+          }
+        ]
       },
-      "id": 1723570156566
-    },
-    {
-      "name": "Check Variable",
-      "file": "checkVariable.js",
-      "data": {
-        "name": "Check Variable",
-        "variable": {
-          "type": "tempVar",
-          "value": "timeoutduration"
-        },
-        "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?[Mm][Ii]?[Nn]?[Uu]?[Tt]?[Ee]?[Ss]?",
-        "true": {
-          "type": "anchorJump",
-          "value": "unitmin"
-        },
-        "trueActions": [],
-        "false": {
-          "type": "continue",
-          "value": ""
-        },
-        "falseActions": []
-      },
-      "id": 1723570351131
-    },
-    {
-      "name": "Check Variable",
-      "file": "checkVariable.js",
-      "data": {
-        "name": "Check Variable",
-        "variable": {
-          "type": "tempVar",
-          "value": "timeoutduration"
-        },
-        "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?[Hh][Oo]?[Uu]?[Rr]?[Ss]?",
-        "true": {
-          "type": "anchorJump",
-          "value": "unithour"
-        },
-        "trueActions": [],
-        "false": {
-          "type": "continue",
-          "value": ""
-        },
-        "falseActions": []
-      },
-      "id": 1723570349474
-    },
-    {
-      "name": "Check Variable",
-      "file": "checkVariable.js",
-      "data": {
-        "name": "Check Variable",
-        "variable": {
-          "type": "tempVar",
-          "value": "timeoutduration"
-        },
-        "comparator": "Matches Regex",
-        "compareValue": "[0-9]+ ?[Dd][Aa]?[Yy]?[Ss]?",
-        "true": {
-          "type": "anchorJump",
-          "value": "unitday"
-        },
-        "trueActions": [],
-        "false": {
-          "type": "continue",
-          "value": ""
-        },
-        "falseActions": []
-      },
-      "id": 1723570349142
+      "id": 1723654167873
     },
     {
       "name": "Send Message",
@@ -168,10 +190,6 @@
       "data": {
         "name": "Send Message",
         "messageContent": "",
-        "channel": {
-          "type": "command",
-          "value": ""
-        },
         "actionRows": [],
         "embeds": [
           {
@@ -185,26 +203,30 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "Your duration formating is wrong, please try using this format:\n`<Number> <Unit>`\n\n-# Accepted Units: seconds, minutes, hours, days",
+              "description": "Your formatting of the timeout duration is not recognised.\nUse this format instead: `<Number> <Unit>`\n-# Possible units: second, minute, hour, day",
               "fields": [],
               "url": "",
-              "timestamp": "None",
+              "timestamp": "Current",
               "customTimestamp": ""
             }
           }
         ],
+        "channel": {
+          "type": "command",
+          "value": ""
+        },
+        "replyToInteraction": true,
+        "storeAs": {
+          "value": "",
+          "type": "temporary"
+        },
         "options": [
           {
             "type": "options"
           }
         ],
-        "storeAs": {
-          "type": "none",
-          "value": ""
-        },
         "attachments": [],
         "poll": [],
-        "replyToInteraction": true,
         "mentions": false,
         "dontSend": false,
         "ephemeral": true,
@@ -217,7 +239,7 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723570403744
+      "id": 1723655491653
     },
     {
       "name": "Stop Actions",
@@ -225,7 +247,7 @@
       "data": {
         "name": "Stop Actions"
       },
-      "id": 1723570474211
+      "id": 1723639529504
     },
     {
       "name": "Create Anchor",
@@ -234,7 +256,7 @@
         "name": "Create Anchor",
         "id": "unitsec"
       },
-      "id": 1723570480352
+      "id": 1723639529505
     },
     {
       "name": "Check Variable",
@@ -267,7 +289,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291854
+            "id": 1723655662383
           },
           {
             "name": "Split Text",
@@ -284,7 +306,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291855
+            "id": 1723655662384
           }
         ],
         "false": {
@@ -307,7 +329,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291856
+            "id": 1723655662385
           },
           {
             "name": "Split Text",
@@ -324,11 +346,11 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291857
+            "id": 1723655662386
           }
         ]
       },
-      "id": 1723574080672
+      "id": 1723639529506
     },
     {
       "name": "Create List Element",
@@ -344,7 +366,7 @@
           "value": "timeoutduration"
         }
       },
-      "id": 1723574595131
+      "id": 1723639529507
     },
     {
       "name": "Create List Element",
@@ -360,7 +382,7 @@
           "value": "timeoutreason"
         }
       },
-      "id": 1723574616824
+      "id": 1723639529508
     },
     {
       "name": "Create Variable",
@@ -373,7 +395,7 @@
         },
         "value": "second(s)"
       },
-      "id": 1723574744679
+      "id": 1723639529509
     },
     {
       "name": "Timeout Member",
@@ -388,7 +410,7 @@
         "timeoutDuration": "${tempVars('timeoutnumber')}",
         "reason": "${tempVars('timeoutreason')}"
       },
-      "id": 1723574391965
+      "id": 1723639529510
     },
     {
       "name": "Send Message",
@@ -409,10 +431,10 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.\nReason: ${tempVars('timeoutreason')}",
               "fields": [],
               "url": "",
-              "timestamp": "None",
+              "timestamp": "Current",
               "customTimestamp": ""
             }
           }
@@ -445,7 +467,7 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723570538869
+      "id": 1723639529511
     },
     {
       "name": "Save Variables",
@@ -453,7 +475,7 @@
       "data": {
         "name": "Save Variables"
       },
-      "id": 1723576287393
+      "id": 1723639529512
     },
     {
       "name": "Stop Actions",
@@ -461,7 +483,7 @@
       "data": {
         "name": "Stop Actions"
       },
-      "id": 1723574937140
+      "id": 1723639529513
     },
     {
       "name": "Create Anchor",
@@ -470,7 +492,7 @@
         "name": "Create Anchor",
         "id": "unitmin"
       },
-      "id": 1723574802407
+      "id": 1723639529514
     },
     {
       "name": "Check Variable",
@@ -503,7 +525,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291858
+            "id": 1723655662388
           },
           {
             "name": "Split Text",
@@ -520,7 +542,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291859
+            "id": 1723655662389
           }
         ],
         "false": {
@@ -543,7 +565,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291860
+            "id": 1723655662390
           },
           {
             "name": "Split Text",
@@ -560,11 +582,11 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291861
+            "id": 1723655662391
           }
         ]
       },
-      "id": 1723575833532
+      "id": 1723639529515
     },
     {
       "name": "Create List Element",
@@ -580,7 +602,7 @@
           "value": "timeoutduration"
         }
       },
-      "id": 1723575833533
+      "id": 1723639529516
     },
     {
       "name": "Create List Element",
@@ -596,7 +618,7 @@
           "value": "timeoutreason"
         }
       },
-      "id": 1723575833534
+      "id": 1723639529517
     },
     {
       "name": "Create Variable",
@@ -609,7 +631,7 @@
         },
         "value": "minute(s)"
       },
-      "id": 1723575833535
+      "id": 1723639529518
     },
     {
       "name": "Timeout Member",
@@ -624,7 +646,7 @@
         "timeoutDuration": "${tempVars('timeoutnumber')}",
         "reason": "${tempVars('timeoutreason')}"
       },
-      "id": 1723575833536
+      "id": 1723639529519
     },
     {
       "name": "Send Message",
@@ -645,10 +667,10 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.\nReason: ${tempVars('timeoutreason')}",
               "fields": [],
               "url": "",
-              "timestamp": "None",
+              "timestamp": "Current",
               "customTimestamp": ""
             }
           }
@@ -681,7 +703,7 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723575833537
+      "id": 1723639529520
     },
     {
       "name": "Save Variables",
@@ -689,7 +711,7 @@
       "data": {
         "name": "Save Variables"
       },
-      "id": 1723576296789
+      "id": 1723639529521
     },
     {
       "name": "Stop Actions",
@@ -697,7 +719,7 @@
       "data": {
         "name": "Stop Actions"
       },
-      "id": 1723574959320
+      "id": 1723639529522
     },
     {
       "name": "Create Anchor",
@@ -706,7 +728,7 @@
         "name": "Create Anchor",
         "id": "unithour"
       },
-      "id": 1723574965105
+      "id": 1723639529523
     },
     {
       "name": "Check Variable",
@@ -739,7 +761,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291862
+            "id": 1723655662392
           },
           {
             "name": "Split Text",
@@ -756,7 +778,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291863
+            "id": 1723655662393
           }
         ],
         "false": {
@@ -779,7 +801,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291864
+            "id": 1723655662394
           },
           {
             "name": "Split Text",
@@ -796,11 +818,11 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291865
+            "id": 1723655662395
           }
         ]
       },
-      "id": 1723575833538
+      "id": 1723639529524
     },
     {
       "name": "Create List Element",
@@ -816,7 +838,7 @@
           "value": "timeoutduration"
         }
       },
-      "id": 1723575833539
+      "id": 1723639529525
     },
     {
       "name": "Create List Element",
@@ -832,7 +854,7 @@
           "value": "timeoutreason"
         }
       },
-      "id": 1723575833540
+      "id": 1723639529526
     },
     {
       "name": "Create Variable",
@@ -845,7 +867,7 @@
         },
         "value": "hour(s)"
       },
-      "id": 1723575833541
+      "id": 1723639529527
     },
     {
       "name": "Timeout Member",
@@ -860,7 +882,7 @@
         "timeoutDuration": "${tempVars('timeoutnumber')}",
         "reason": "${tempVars('timeoutreason')}"
       },
-      "id": 1723575833542
+      "id": 1723639529528
     },
     {
       "name": "Send Message",
@@ -881,10 +903,10 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.\nReason: ${tempVars('timeoutreason')}",
               "fields": [],
               "url": "",
-              "timestamp": "None",
+              "timestamp": "Current",
               "customTimestamp": ""
             }
           }
@@ -917,7 +939,7 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723575833543
+      "id": 1723639529529
     },
     {
       "name": "Save Variables",
@@ -925,7 +947,7 @@
       "data": {
         "name": "Save Variables"
       },
-      "id": 1723576301146
+      "id": 1723639529530
     },
     {
       "name": "Stop Actions",
@@ -933,7 +955,7 @@
       "data": {
         "name": "Stop Actions"
       },
-      "id": 1723575833544
+      "id": 1723639529531
     },
     {
       "name": "Create Anchor",
@@ -942,7 +964,7 @@
         "name": "Create Anchor",
         "id": "unitday"
       },
-      "id": 1723575030184
+      "id": 1723639529532
     },
     {
       "name": "Check Variable",
@@ -975,7 +997,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291867
+            "id": 1723655662396
           },
           {
             "name": "Split Text",
@@ -992,7 +1014,7 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291868
+            "id": 1723655662397
           }
         ],
         "false": {
@@ -1015,7 +1037,7 @@
                 "value": "timeoutdurationtrim"
               }
             },
-            "id": 1723576291869
+            "id": 1723655662398
           },
           {
             "name": "Split Text",
@@ -1032,11 +1054,11 @@
                 "value": "timeoutnumber"
               }
             },
-            "id": 1723576291870
+            "id": 1723655662399
           }
         ]
       },
-      "id": 1723575833545
+      "id": 1723639529533
     },
     {
       "name": "Create List Element",
@@ -1052,7 +1074,7 @@
           "value": "timeoutduration"
         }
       },
-      "id": 1723575833546
+      "id": 1723639529534
     },
     {
       "name": "Create List Element",
@@ -1068,7 +1090,7 @@
           "value": "timeoutreason"
         }
       },
-      "id": 1723575833547
+      "id": 1723639529535
     },
     {
       "name": "Create Variable",
@@ -1081,7 +1103,7 @@
         },
         "value": "day(s)"
       },
-      "id": 1723575833548
+      "id": 1723639529536
     },
     {
       "name": "Timeout Member",
@@ -1096,7 +1118,7 @@
         "timeoutDuration": "${tempVars('timeoutnumber')}",
         "reason": "${tempVars('timeoutreason')}"
       },
-      "id": 1723575833549
+      "id": 1723639529537
     },
     {
       "name": "Send Message",
@@ -1117,10 +1139,10 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.",
+              "description": "${tempVars('timeoutmember')} has been timed out for ${tempVars('timeoutnumber')}${tempVars('timeoutunit')}.\nReason: ${tempVars('timeoutreason')}",
               "fields": [],
               "url": "",
-              "timestamp": "None",
+              "timestamp": "Current",
               "customTimestamp": ""
             }
           }
@@ -1153,7 +1175,7 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723575833550
+      "id": 1723639529538
     },
     {
       "name": "Save Variables",
@@ -1161,7 +1183,7 @@
       "data": {
         "name": "Save Variables"
       },
-      "id": 1723576307203
+      "id": 1723639529539
     },
     {
       "name": "Stop Actions",
@@ -1169,7 +1191,7 @@
       "data": {
         "name": "Stop Actions"
       },
-      "id": 1723575833551
+      "id": 1723639529540
     },
     {
       "name": "Create Anchor",
@@ -1178,7 +1200,7 @@
         "name": "Create Anchor",
         "id": "timeoutpermerror"
       },
-      "id": 1723575287006
+      "id": 1723639529541
     },
     {
       "name": "Send Message",
@@ -1199,10 +1221,10 @@
               "thumbnailURL": "",
               "authorName": "",
               "authorIcon": "",
-              "description": "${tempVars('timeoutmember')} has permission to mute members and thus, can't be under timeout.",
+              "description": "${tempVars('timeoutmember')} has permission to mute members and thus, can't be under timeout.\nReason: ${tempVars('timeoutreason')}",
               "fields": [],
               "url": "",
-              "timestamp": "None",
+              "timestamp": "Current",
               "customTimestamp": ""
             }
           }
@@ -1235,10 +1257,18 @@
         "updateEmbeds": false,
         "updateAttachments": false
       },
-      "id": 1723575308671
+      "id": 1723639529542
+    },
+    {
+      "name": "Stop Actions",
+      "file": "stopRunningActions.js",
+      "data": {
+        "name": "Stop Actions"
+      },
+      "id": 1723654285266
     }
   ],
-  "customId": 1723569958572,
+  "customId": 1723635368179,
   "boundary": {
     "worksIn": "guild",
     "limits": [
