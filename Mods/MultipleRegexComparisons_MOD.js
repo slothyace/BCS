@@ -5,7 +5,7 @@ module.exports = {
     category: "Control",
 
     info:{
-        source: "https://github.com/slothyace/BCS/mods",
+        source: "https://github.com/slothyace/BCS/tree/main/Mods",
         creator: "Acedia",
     },
 
