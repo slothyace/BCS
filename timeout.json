@@ -107,7 +107,7 @@
     },
     {
       "name": "Multiple Regex Comparisons",
-      "file": "multiRegexCompare.js",
+      "file": "MultipleRegexComparisons_MOD.js",
       "data": {
         "name": "Multiple Regex Comparisons",
         "input": "${tempVars('timeoutduration')}",
