@@ -6,6 +6,6 @@ Commands are grouped by their functionality class.
 ## Mods
 [`Mods`](https://github.com/slothyace/BCS/tree/main/Mods) folder is for BMD modded actions made by slothyace.
 
-Any command requiring modded actions can be downloaded from the main [Bmods repository](https://github.com/RatWasHere/bmods).
+Any command requiring modded actions can be downloaded from the main [bmods repository](https://github.com/RatWasHere/bmods).
 
-If its not found in the main Bmods repository, the modded actions can be found [here](https://github.com/slothyace/BCS/tree/main/Mods).
+If its not found in the main bmods repository, the modded actions can be found [here](https://github.com/slothyace/BCS/tree/main/Mods).
