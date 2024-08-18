@@ -8,4 +8,4 @@ Commands are grouped by their functionality class.
 
 Any command requiring modded actions can be downloaded from the main [Bmods repository](https://github.com/RatWasHere/bmods).
 
-If its not found there, can be found [here](https://github.com/slothyace/BCS/tree/main/Mods).
+If its not found in the main Bmods repository, the modded actions can be found [here](https://github.com/slothyace/BCS/tree/main/Mods).
