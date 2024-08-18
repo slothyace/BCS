@@ -68,12 +68,12 @@
       "id": 1720709009466
     },
     {
-      "name": "Check If Text Starts With",
-      "file": "checkIfTextStartsWith.js",
+      "name": "Check If Text Includes",
+      "file": "checkIfTextIncludes.js",
       "data": {
-        "name": "Check If Text Starts With",
+        "name": "Check If Text Includes",
         "string": "${tempVars('steamlinkurl')}",
-        "startsWith": "https://",
+        "includes": "steamcommunity.com/",
         "true": {
           "type": "continue",
           "value": ""
