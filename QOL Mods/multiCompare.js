@@ -2,12 +2,14 @@ module.exports = {
   data: {
     name: "Multiple Comparisons",
   },
+  category: "Control",
+
   info: {
     source: "https://github.com/slothyace/BCS/tree/main/QOL%20Mods",
     creator: "Acedia QOLs",
     donate: "ko-fi.com/slothyacedia",
   },
-  category: "Control",
+  
   UI: [
     {
       element: "input",
