@@ -10,7 +10,7 @@ module.exports = {
     {
         element: "input",
         storeAs: "label",
-        name: "Label"
+        name: "Label (optional)"
     },
     "-",
     {
