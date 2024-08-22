@@ -12,13 +12,13 @@ module.exports = {
         {
             element: "input",
             storeAs: "label",
-            name: "Label",
+            name: "Label (optional)",
         },
         "-",
         {
             element: "menu",
             storeAs: "serverlist",
-            name: "Server List",
+            name: "RCON List",
             types: {
                 servers: "servers",
             },
@@ -26,8 +26,8 @@ module.exports = {
             UItypes: {
                 servers: {
                     data: {},
-                    name: "Server Details:",
-                    preview: "`${option.data.ipaddress}:${option.data.portnumber}, command: ${option.data.rconcommand}`",
+                    name: "Command:",
+                    preview: "`${option.data.rconcommand}`",
                     UI: [
                         {
                             element: "input",
