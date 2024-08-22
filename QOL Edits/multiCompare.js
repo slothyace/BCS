@@ -7,7 +7,7 @@ module.exports = {
   info: {
     source: "https://github.com/slothyace/BCS/tree/main/QOL%20Edits",
     creator: "Acedia QOLs",
-    donate: "ko-fi.com/slothyacedia",
+    donate: "https://ko-fi.com/slothyacedia",
   },
   
   UI: [
