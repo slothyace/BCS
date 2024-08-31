@@ -1,6 +1,6 @@
 module.exports = {
   data: {
-    name: "Get Commands Info",
+    name: "Get All Text Commands",
     tags: "Library Of Conflict",
   },
   category: "Bot",
@@ -11,25 +11,23 @@ module.exports = {
   },
   UI: [
     {
-      element: "storageInput",
+      element: "store",
       storeAs: "store",
       name: "Store Commands in List As",
     },
   ],
 
-  subtitle: (data) => {
-    return `List stored as ${data.store}`;
+  subtitle: (data, constants) => {
+    return `List stored as: ${constants.variable(data.store)}}`
   },
 
   compatibility: ["Any"],
 
   async run(values, message, client, bridge) {
-
     const jsonData = require('../data.json');
     const commands = jsonData.commands;
 
     const commandList = [];
-
 
     commands.forEach(command => {
       if (command.trigger === 'textCommand') {
@@ -37,6 +35,6 @@ module.exports = {
       }
     });
 
-    bridge.store(values.commandList, commandList);
+    bridge.store(values.store, commandList);
   }
 };
