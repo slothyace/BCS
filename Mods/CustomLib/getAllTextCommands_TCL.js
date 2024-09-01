@@ -18,7 +18,7 @@ module.exports = {
   ],
 
   subtitle: (data, constants) => {
-    return `List stored as: ${constants.variable(data.store)}}`
+    return `List stored as: ${constants.variable(data.store)}`
   },
 
   compatibility: ["Any"],
