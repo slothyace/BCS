@@ -13,7 +13,7 @@ module.exports = {
     {
       element: "store",
       storeAs: "store",
-      name: "Store Commands in List As",
+      name: "Store Commands List As",
     },
   ],
 
