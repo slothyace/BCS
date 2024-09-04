@@ -33,7 +33,7 @@ module.exports = {
     const jsonData = require('../data.json');
     const commands = jsonData.commands;
 
-    const foundCommand = commands.find(cmd => cmd.name === commandName);
+    const foundCommand = commands.find(cmd => cmd.name === commandName && cmd.trigger === 'textCommand');
     if (foundCommand.trigger === 'textCommand'){
       if (foundCommand.aliases && foundCommand.aliases.length > 0){
         bridge.store(values.store, foundCommand.aliases);
