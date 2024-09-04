@@ -1,6 +1,6 @@
 module.exports = {
   data: {
-    name: "Get Command Alias(es)",
+    name: "Get Command Aliases",
   },
   category: "Bot",
   info: {
@@ -23,7 +23,7 @@ module.exports = {
   ],
 
   subtitle: (data) => {
-    return `Store ${data.commandname}'s Alias(es)`;
+    return `Store ${data.commandname}'s Aliases`;
   },
 
   compatibility: ["Any"],
@@ -39,7 +39,7 @@ module.exports = {
         bridge.store(values.store, foundCommand.aliases);
       }
       else {
-        bridge.store(values.store, `No alias(es) are available for "${values.commandname}".`);
+        bridge.store(values.store, `No aliases are available for "${values.commandname}".`);
       }
     }
     else {
