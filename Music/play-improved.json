@@ -47,19 +47,21 @@
       "id": 1721413164147
     },
     {
-      "name": "Replace",
-      "file": "replace.js",
+      "name": "Text Conversions",
+      "file": "textConversions_MOD.js",
       "data": {
-        "name": "Replace",
-        "input": "${tempVars('impvsearch')}",
-        "replace": " ",
-        "with": "%20",
+        "name": "Text Conversions",
+        "OriginalTxt": "${tempVars('impvsearch')}",
+        "convType": {
+          "type": "URIencodeComp",
+          "value": ""
+        },
         "store": {
           "type": "temporary",
           "value": "impvsearchparsed"
         }
       },
-      "id": 1721410570828
+      "id": 1726337283212
     },
     {
       "name": "Create Variable",
@@ -116,7 +118,7 @@
                           },
                           "value": "${tempVars('apians').items[0].id.videoId}"
                         },
-                        "id": 1723653878754
+                        "id": 1726337316943
                       },
                       {
                         "name": "Create Variable",
@@ -129,7 +131,7 @@
                           },
                           "value": "${tempVars('apians').items[0].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878755
+                        "id": 1726337316944
                       },
                       {
                         "name": "Create Variable",
@@ -142,7 +144,7 @@
                           },
                           "value": "${tempVars('apians').items[0].snippet.title}"
                         },
-                        "id": 1723653878756
+                        "id": 1726337316945
                       },
                       {
                         "name": "Jump To Anchor",
@@ -151,7 +153,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878757
+                        "id": 1726337316946
                       }
                     ],
                     "disabled": false,
@@ -183,7 +185,7 @@
                           },
                           "value": "${tempVars('apians').items[1].id.videoId}"
                         },
-                        "id": 1723653878758
+                        "id": 1726337316947
                       },
                       {
                         "name": "Create Variable",
@@ -196,7 +198,7 @@
                           },
                           "value": "${tempVars('apians').items[1].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878759
+                        "id": 1726337316948
                       },
                       {
                         "name": "Create Variable",
@@ -209,7 +211,7 @@
                           },
                           "value": "${tempVars('apians').items[1].snippet.title}"
                         },
-                        "id": 1723653878760
+                        "id": 1726337316949
                       },
                       {
                         "name": "Jump To Anchor",
@@ -218,7 +220,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878761
+                        "id": 1726337316950
                       }
                     ],
                     "disabled": false,
@@ -250,7 +252,7 @@
                           },
                           "value": "${tempVars('apians').items[2].id.videoId}"
                         },
-                        "id": 1723653878762
+                        "id": 1726337316951
                       },
                       {
                         "name": "Create Variable",
@@ -263,7 +265,7 @@
                           },
                           "value": "${tempVars('apians').items[2].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878763
+                        "id": 1726337316952
                       },
                       {
                         "name": "Create Variable",
@@ -276,7 +278,7 @@
                           },
                           "value": "${tempVars('apians').items[2].snippet.title}"
                         },
-                        "id": 1723653878764
+                        "id": 1726337316953
                       },
                       {
                         "name": "Jump To Anchor",
@@ -285,7 +287,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878765
+                        "id": 1726337316954
                       }
                     ],
                     "disabled": false,
@@ -317,7 +319,7 @@
                           },
                           "value": "${tempVars('apians').items[3].id.videoId}"
                         },
-                        "id": 1723653878766
+                        "id": 1726337316955
                       },
                       {
                         "name": "Create Variable",
@@ -330,7 +332,7 @@
                           },
                           "value": "${tempVars('apians').items[3].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878767
+                        "id": 1726337316956
                       },
                       {
                         "name": "Create Variable",
@@ -343,7 +345,7 @@
                           },
                           "value": "${tempVars('apians').items[3].snippet.title}"
                         },
-                        "id": 1723653878768
+                        "id": 1726337316957
                       },
                       {
                         "name": "Jump To Anchor",
@@ -352,7 +354,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878769
+                        "id": 1726337316958
                       }
                     ],
                     "disabled": false,
@@ -384,7 +386,7 @@
                           },
                           "value": "${tempVars('apians').items[4].id.videoId}"
                         },
-                        "id": 1723653878770
+                        "id": 1726337316959
                       },
                       {
                         "name": "Create Variable",
@@ -397,7 +399,7 @@
                           },
                           "value": "${tempVars('apians').items[4].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878771
+                        "id": 1726337316960
                       },
                       {
                         "name": "Create Variable",
@@ -410,7 +412,7 @@
                           },
                           "value": "${tempVars('apians').items[4].snippet.title}"
                         },
-                        "id": 1723653878772
+                        "id": 1726337316961
                       },
                       {
                         "name": "Jump To Anchor",
@@ -419,7 +421,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878773
+                        "id": 1726337316962
                       }
                     ],
                     "disabled": false,
@@ -466,7 +468,7 @@
                           },
                           "value": "${tempVars('apians').items[5].id.videoId}"
                         },
-                        "id": 1723653878774
+                        "id": 1726337316963
                       },
                       {
                         "name": "Create Variable",
@@ -479,7 +481,7 @@
                           },
                           "value": "${tempVars('apians').items[5].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878775
+                        "id": 1726337316964
                       },
                       {
                         "name": "Create Variable",
@@ -492,7 +494,7 @@
                           },
                           "value": "${tempVars('apians').items[5].snippet.title}"
                         },
-                        "id": 1723653878776
+                        "id": 1726337316965
                       },
                       {
                         "name": "Jump To Anchor",
@@ -501,7 +503,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878777
+                        "id": 1726337316966
                       }
                     ],
                     "disabled": false,
@@ -533,7 +535,7 @@
                           },
                           "value": "${tempVars('apians').items[6].id.videoId}"
                         },
-                        "id": 1723653878778
+                        "id": 1726337316967
                       },
                       {
                         "name": "Create Variable",
@@ -546,7 +548,7 @@
                           },
                           "value": "${tempVars('apians').items[6].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878779
+                        "id": 1726337316968
                       },
                       {
                         "name": "Create Variable",
@@ -559,7 +561,7 @@
                           },
                           "value": "${tempVars('apians').items[6].snippet.title}"
                         },
-                        "id": 1723653878780
+                        "id": 1726337316969
                       },
                       {
                         "name": "Jump To Anchor",
@@ -568,7 +570,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878781
+                        "id": 1726337316970
                       }
                     ],
                     "disabled": false,
@@ -600,7 +602,7 @@
                           },
                           "value": "${tempVars('apians').items[7].id.videoId}"
                         },
-                        "id": 1723653878782
+                        "id": 1726337316971
                       },
                       {
                         "name": "Create Variable",
@@ -613,7 +615,7 @@
                           },
                           "value": "${tempVars('apians').items[7].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878783
+                        "id": 1726337316972
                       },
                       {
                         "name": "Create Variable",
@@ -626,7 +628,7 @@
                           },
                           "value": "${tempVars('apians').items[7].snippet.title}"
                         },
-                        "id": 1723653878784
+                        "id": 1726337316973
                       },
                       {
                         "name": "Jump To Anchor",
@@ -635,7 +637,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878785
+                        "id": 1726337316974
                       }
                     ],
                     "disabled": false,
@@ -667,7 +669,7 @@
                           },
                           "value": "${tempVars('apians').items[8].id.videoId}"
                         },
-                        "id": 1723653878787
+                        "id": 1726337316975
                       },
                       {
                         "name": "Create Variable",
@@ -680,7 +682,7 @@
                           },
                           "value": "${tempVars('apians').items[8].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878788
+                        "id": 1726337316976
                       },
                       {
                         "name": "Create Variable",
@@ -693,7 +695,7 @@
                           },
                           "value": "${tempVars('apians').items[8].snippet.title}"
                         },
-                        "id": 1723653878789
+                        "id": 1726337316977
                       },
                       {
                         "name": "Jump To Anchor",
@@ -702,7 +704,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878790
+                        "id": 1726337316978
                       }
                     ],
                     "disabled": false,
@@ -734,7 +736,7 @@
                           },
                           "value": "${tempVars('apians').items[9].id.videoId}"
                         },
-                        "id": 1723653878791
+                        "id": 1726337316979
                       },
                       {
                         "name": "Create Variable",
@@ -747,7 +749,7 @@
                           },
                           "value": "${tempVars('apians').items[9].snippet.thumbnails.high.url}"
                         },
-                        "id": 1723653878792
+                        "id": 1726337316980
                       },
                       {
                         "name": "Create Variable",
@@ -760,7 +762,7 @@
                           },
                           "value": "${tempVars('apians').items[9].snippet.title}"
                         },
-                        "id": 1723653878793
+                        "id": 1726337316981
                       },
                       {
                         "name": "Jump To Anchor",
@@ -769,7 +771,7 @@
                           "name": "Jump To Anchor",
                           "id": "impvplay"
                         },
-                        "id": 1723653878794
+                        "id": 1726337316982
                       }
                     ],
                     "disabled": false,
