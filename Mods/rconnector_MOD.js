@@ -39,8 +39,13 @@ module.exports = {
     },
     {
       element: "store",
-      storeAs: "connectionId",
-      name: "Store Connection Details As"
+      storeAs: "serverMessage",
+      name: "Store RCON Server Message As",
+    },
+    {
+      element: "actions",
+      storeAs: "toRunAct",
+      name: "Run actions"
     }
   ],
 
@@ -69,6 +74,9 @@ module.exports = {
         console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.`)
         rconServer.connect()
       }
+    }).on("server", function (str) {
+      bridge.store(values.serverMessage, str);
+      bridge.runner(values.toRunAct);
     })
     
     try{
@@ -77,11 +85,5 @@ module.exports = {
     catch(error){
       console.log(`Error connecting with ${ipAddr}:${ipPort}`)
     }
-
-    if (!client.rcon) client.rcon = {}
-
-    const connectionId = (rconLb||ipAddr) + ipPort
-    client.rcon[connectionId] = rconServer;
-    bridge.store(values.connectionId, connectionId)
   }
 }
