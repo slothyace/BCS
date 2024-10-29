@@ -74,7 +74,12 @@ module.exports = {
         console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.`)
         rconServer.connect()
       }
+    }).on("response", function (str) {
+      console.log(str)
+      bridge.store(values.serverMessage, str);
+      bridge.runner(values.toRunAct);
     }).on("server", function (str) {
+      console.log(str)
       bridge.store(values.serverMessage, str);
       bridge.runner(values.toRunAct);
     })
