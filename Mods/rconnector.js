@@ -64,7 +64,7 @@ module.exports = {
     }).on("error", function(err){
       console.log(`Connection with ${ipAddr}:${ipPort} failed. Probably a wrong password.` + err)
     }).on("end", function(){
-      if (maintain == true){
+      if (bridge.transf(values.maintain) == true){
         console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.`)
         rconServer.connect()
       }
@@ -77,7 +77,7 @@ module.exports = {
       console.log(`Error connecting with ${ipAddr}:${ipPort}`)
     }
 
-    connectionId = (rconLb||ipAddr) + ipPort
+    const connectionId = (rconLb||ipAddr) + ipPort
     client.rcon[connectionId] = rconServer
     bridge.store(values.connectionId, connectionId)
   }
