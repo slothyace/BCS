@@ -77,7 +77,7 @@ module.exports = {
       console.log(`Error connecting with ${ipAddr}:${ipPort}`)
     }
 
-    const connectionId = (rconLb||ipAddr) + ipPort
+    const connectionId = rconLb||ipAddr + ipPort
     client.rcon[connectionId] = rconServer
     bridge.store(values.connectionId, connectionId)
   }
