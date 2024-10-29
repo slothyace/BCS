@@ -31,6 +31,7 @@ module.exports = {
       storeAs: "rconPassword",
       name: "RCON Server Password",
     },
+    "-",
     {
       element: "toggle",
       storeAs: "maintain",
@@ -77,8 +78,10 @@ module.exports = {
       console.log(`Error connecting with ${ipAddr}:${ipPort}`)
     }
 
-    const connectionId = rconLb||ipAddr + ipPort
-    client.rcon[connectionId] = rconServer
+    if (!client.rcon) client.rcon = {}
+
+    const connectionId = (rconLb||ipAddr) + ipPort
+    client.rcon[connectionId] = rconServer;
     bridge.store(values.connectionId, connectionId)
   }
 }
