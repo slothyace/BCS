@@ -88,35 +88,38 @@ module.exports = {
     const Rcon = require("rcon")
 
     for (let rconDetails of values.rconList){
+      await new Promise((resolve, reject) => {
 
-      const config = {
-        tcp: bridge.transf(rconDetails.data.tcpudp),
-        challenge: bridge.transf(rconDetails.data.challengePtc)
-      }
+        const config = {
+          tcp: bridge.transf(rconDetails.data.tcpudp),
+          challenge: bridge.transf(rconDetails.data.challengePtc)
+        }
 
-      const ipAddr = bridge.transf(rconDetails.data.ipAddress)
-      const ipPort = bridge.transf(rconDetails.data.ipPort)
-      const rconPw = bridge.transf(rconDetails.data.rconPassword)
-      const rconCm = bridge.transf(rconDetails.data.rconCommand)
+        const ipAddr = bridge.transf(rconDetails.data.ipAddress)
+        const ipPort = bridge.transf(rconDetails.data.ipPort)
+        const rconPw = bridge.transf(rconDetails.data.rconPassword)
+        const rconCm = bridge.transf(rconDetails.data.rconCommand)
 
-      const rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
+        const rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
 
-      rconServer.on("auth", function(){
-        console.log(`Connection to ${ipAddr}:${ipPort} established\n`)
-        console.log(`Sending command: ${rconCm}\n`)
-        rconServer.send(rconCm)
-      }).on("response", function(str){
-        console.log("Response received: "+ str +"\n")
-        rconServer.disconnect()
-        bridge.store(rconDetails.data.rconResponse, str)
-        bridge.runner(rconDetails.data.actions)
-      }).on("end", function(){
-        console.log(`Connection to ${ipAddr}:${ipPort} dropped.\n`)
-      }).on("error", function(str){
-        console.log(`Error: ${str}\n`)
+        rconServer.on("auth", function(){
+          console.log(`Connection to ${ipAddr}:${ipPort} established\n`)
+          console.log(`Sending command: ${rconCm}\n`)
+          rconServer.send(rconCm)
+        }).on("response", function(str){
+          console.log("Response received: "+ str +"\n")
+          rconServer.disconnect()
+          bridge.store(rconDetails.data.rconResponse, str)
+          bridge.runner(rconDetails.data.actions)
+        }).on("end", function(){
+          console.log(`Connection to ${ipAddr}:${ipPort} dropped.\n`)
+        }).on("error", function(str){
+          console.log(`Error: ${str}\n`)
+        })
+    
+        rconServer.connect()
+        
       })
-  
-      rconServer.connect()
     }
   }
 }
