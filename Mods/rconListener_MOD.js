@@ -1,8 +1,8 @@
 module.exports = {
   data: {
-    name: "RCON Connect",
+    name: "RCON Listener",
   },
-  category: "Game",
+  category: "RCON",
   info: {
     source: "https://github.com/slothyace/BCS/tree/main/Mods",
     creator: "Acedia",
@@ -10,12 +10,6 @@ module.exports = {
   },
   modules: ["rcon"],
   UI: [
-    {
-      element: "input",
-      storeAs: "connectionLabel",
-      name: "Connection Label",
-      placeholder: "Try to use a unique connection label",
-    },
     {
       element: "input",
       storeAs: "ipAddress",
@@ -31,6 +25,18 @@ module.exports = {
       storeAs: "rconPassword",
       name: "RCON Server Password",
     },
+    {
+      element: "toggle",
+      storeAs: "tcpudp",
+      name: "TCP / UDP",
+      true: "TCP",
+      false: "UDP",
+    },
+    {
+      element: "toggle",
+      storeAs: "challengePtc",
+      name: "Use Challenge Protocol"
+    },
     "-",
     {
       element: "toggle",
@@ -45,12 +51,12 @@ module.exports = {
     {
       element: "actions",
       storeAs: "toRunAct",
-      name: "Run actions"
+      name: "Run actions",
     }
   ],
 
   subtitle: (values) => {
-    return `${values.connectionLabel} | Connect to ${values.ipAddress}:${values.ipPort}, maintained: ${values.maintain}`
+    return `Listen to ${values.ipAddress}:${values.ipPort}, maintained: ${values.maintain}`
   },
 
   compatibility: ["Any"],
@@ -58,37 +64,37 @@ module.exports = {
   async run(values, interaction, client, bridge){
     const Rcon = require("rcon")
 
-    rconLb = bridge.transf(values.connectionLabel)
-    ipAddr = bridge.transf(values.ipAddress)
-    ipPort = bridge.transf(values.ipPort)
-    rconPw = bridge.transf(values.rconPassword)
+    const config = {
+      tcp: bridge.transf(values.tcpudp),
+      challenge: bridge.transf(values.challengePtc)
+    }
 
-    const rconServer = new Rcon(ipAddr, ipPort, rconPw)
+    const ipAddr = bridge.transf(values.ipAddress)
+    const ipPort = bridge.transf(values.ipPort)
+    const rconPw = bridge.transf(values.rconPassword)
+
+    const rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
 
     rconServer.on("auth", function(){
-      console.log(`Connection made with ${ipAddr}:${ipPort}, authentication success.`)
+      console.log(`Connection made with ${ipAddr}:${ipPort}, authentication success.\n`)
     }).on("error", function(err){
-      console.log(`Connection with ${ipAddr}:${ipPort} failed. Probably a wrong password.` + err)
+      console.log(`Error: ${str}\n`)
     }).on("end", function(){
       if (bridge.transf(values.maintain) == true){
-        console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.`)
+        console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.\n`)
         rconServer.connect()
       }
     }).on("response", function (str) {
-      console.log(str)
+      console.log(str+"\n")
       bridge.store(values.serverMessage, str);
       bridge.runner(values.toRunAct);
     }).on("server", function (str) {
-      console.log(str)
+      console.log(str+"\n")
       bridge.store(values.serverMessage, str);
       bridge.runner(values.toRunAct);
     })
     
-    try{
-      rconServer.connect()
-    }
-    catch(error){
-      console.log(`Error connecting with ${ipAddr}:${ipPort}`)
-    }
+    rconServer.connect()
+
   }
 }
