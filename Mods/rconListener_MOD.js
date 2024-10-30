@@ -64,32 +64,32 @@ module.exports = {
   async run(values, interaction, client, bridge){
     const Rcon = require("rcon")
 
-    var config = {
+    const config = {
       tcp: bridge.transf(values.tcpudp),
       challenge: bridge.transf(values.challengePtc)
     }
 
-    ipAddr = bridge.transf(values.ipAddress)
-    ipPort = bridge.transf(values.ipPort)
-    rconPw = bridge.transf(values.rconPassword)
+    const ipAddr = bridge.transf(values.ipAddress)
+    const ipPort = bridge.transf(values.ipPort)
+    const rconPw = bridge.transf(values.rconPassword)
 
     const rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
 
     rconServer.on("auth", function(){
-      console.log(`Connection made with ${ipAddr}:${ipPort}, authentication success.`)
+      console.log(`Connection made with ${ipAddr}:${ipPort}, authentication success.\n`)
     }).on("error", function(err){
-      console.log(`Error: ${str}`)
+      console.log(`Error: ${str}\n`)
     }).on("end", function(){
       if (bridge.transf(values.maintain) == true){
-        console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.`)
+        console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.\n`)
         rconServer.connect()
       }
     }).on("response", function (str) {
-      console.log(str)
+      console.log(str+"\n")
       bridge.store(values.serverMessage, str);
       bridge.runner(values.toRunAct);
     }).on("server", function (str) {
-      console.log(str)
+      console.log(str+"\n")
       bridge.store(values.serverMessage, str);
       bridge.runner(values.toRunAct);
     })

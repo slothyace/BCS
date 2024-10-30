@@ -1,6 +1,6 @@
 module.exports = {
   data: {
-    name: "Send RCON Command"
+    name: "RCON Commander"
   },
   category: "RCON",
   info: {
@@ -64,31 +64,31 @@ module.exports = {
   async run(values, interaction, client, bridge){
     const Rcon = require("rcon")
 
-    var config = {
+    const config = {
       tcp: bridge.transf(values.tcpudp),
       challenge: bridge.transf(values.challengePtc)
     }
 
-    ipAddr = bridge.transf(values.ipAddress)
-    ipPort = bridge.transf(values.ipPort)
-    rconPw = bridge.transf(values.rconPassword)
-    rconCm = bridge.transf(values.rconCommand)
+    const ipAddr = bridge.transf(values.ipAddress)
+    const ipPort = bridge.transf(values.ipPort)
+    const rconPw = bridge.transf(values.rconPassword)
+    const rconCm = bridge.transf(values.rconCommand)
 
     rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
 
     rconServer.on("auth", function(){
-      console.log(`Connection to ${ipAddr}:${ipPort} establish`)
-      console.log(`Sending command: ${rconCm}`)
+      console.log(`Connection to ${ipAddr}:${ipPort} established\n`)
+      console.log(`Sending command: ${rconCm}\n`)
       rconServer.send(rconCm)
     }).on("response", function(str){
-      console.log("Response received: "+ str)
+      console.log("Response received: "+ str +"\n")
       rconServer.disconnect()
       bridge.store(values.rconResponse, str)
       bridge.runner(values.actions)
     }).on("end", function(){
-      console.log(`Connection to ${ipAddr}:${ipPort} dropped.`)
+      console.log(`Connection to ${ipAddr}:${ipPort} dropped.\n`)
     }).on("error", function(str){
-      console.log(`Error: ${str}`)
+      console.log(`Error: ${str}\n`)
     })
 
     rconServer.connect()
