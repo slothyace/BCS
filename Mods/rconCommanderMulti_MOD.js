@@ -114,9 +114,11 @@ module.exports = {
           resolve()
         }).on("end", function(){
           console.log(`Connection to ${ipAddr}:${ipPort} dropped.\n`)
+          rconServer.disconnect()
           resolve()
         }).on("error", function(str){
           console.log(`Error: ${str}\n`)
+          rconServer.disconnect()
           reject()
         })
     

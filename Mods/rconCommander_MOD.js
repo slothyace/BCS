@@ -87,8 +87,10 @@ module.exports = {
       bridge.runner(values.actions)
     }).on("end", function(){
       console.log(`Connection to ${ipAddr}:${ipPort} dropped.\n`)
+      rconServer.disconnect()
     }).on("error", function(str){
       console.log(`Error: ${str}\n`)
+      rconServer.disconnect()
     })
 
     rconServer.connect()
