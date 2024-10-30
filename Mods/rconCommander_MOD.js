@@ -75,24 +75,31 @@ module.exports = {
     const rconCm = bridge.transf(values.rconCommand)
 
     rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
+    rconServer.connect()
 
     rconServer.on("auth", function(){
       console.log(`Connection to ${ipAddr}:${ipPort} established\n`)
       console.log(`Sending command: ${rconCm}\n`)
       rconServer.send(rconCm)
-    }).on("response", function(str){
+    })
+    
+    rconServer.on("response", function(str){
       console.log("Response received: "+ str +"\n")
       rconServer.disconnect()
       bridge.store(values.rconResponse, str)
       bridge.runner(values.actions)
-    }).on("end", function(){
+    })
+    
+    rconServer.on("end", function(){
       console.log(`Connection to ${ipAddr}:${ipPort} dropped.\n`)
       rconServer.disconnect()
-    }).on("error", function(str){
+    })
+    
+    rconServer.on("error", function(str){
       console.log(`Error: ${str}\n`)
       rconServer.disconnect()
     })
 
-    rconServer.connect()
+    
   }
 }

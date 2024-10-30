@@ -74,27 +74,33 @@ module.exports = {
     const rconPw = bridge.transf(values.rconPassword)
 
     const rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
+    rconServer.connect()
 
     rconServer.on("auth", function(){
       console.log(`Connection made with ${ipAddr}:${ipPort}, authentication success.\n`)
-    }).on("error", function(err){
+    })
+    
+    rconServer.on("error", function(err){
       console.log(`Error: ${str}\n`)
-    }).on("end", function(){
+    })
+    
+    rconServer.on("end", function(){
       if (bridge.transf(values.maintain) == true){
         console.log(`Connection with ${ipAddr}:${ipPort} dropped, attempting reconnecting.\n`)
         rconServer.connect()
       }
-    }).on("response", function (str) {
-      console.log(str+"\n")
-      bridge.store(values.serverMessage, str);
-      bridge.runner(values.toRunAct);
-    }).on("server", function (str) {
+    })
+    
+    rconServer.on("response", function (str) {
       console.log(str+"\n")
       bridge.store(values.serverMessage, str);
       bridge.runner(values.toRunAct);
     })
     
-    rconServer.connect()
-
+    rconServer.on("server", function (str) {
+      console.log(str+"\n")
+      bridge.store(values.serverMessage, str);
+      bridge.runner(values.toRunAct);
+    })
   }
 }
