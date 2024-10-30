@@ -25,6 +25,18 @@ module.exports = {
       storeAs: "rconPassword",
       name: "RCON Server Password",
     },
+    {
+      element: "toggle",
+      storeAs: "tcpudp",
+      name: "TCP / UDP",
+      true: "TCP",
+      false: "UDP",
+    },
+    {
+      element: "toggle",
+      storeAs: "challengePtc",
+      name: "Use Challenge Protocol"
+    },
     "-",
     {
       element: "largeInput",
@@ -51,12 +63,18 @@ module.exports = {
 
   async run(values, interaction, client, bridge){
     const Rcon = require("rcon")
+
+    var config = {
+      tcp: bridge.transf(values.tcpudp),
+      challenge: bridge.transf(values.challengePtc)
+    }
+
     ipAddr = bridge.transf(values.ipAddress)
     ipPort = bridge.transf(values.ipPort)
     rconPw = bridge.transf(values.rconPassword)
     rconCm = bridge.transf(values.rconCommand)
 
-    rconServer = new Rcon(ipAddr, ipPort, rconPw)
+    rconServer = new Rcon(ipAddr, ipPort, rconPw, config)
 
     rconServer.on("auth", function(){
       console.log(`Connection to ${ipAddr}:${ipPort} establish`)
