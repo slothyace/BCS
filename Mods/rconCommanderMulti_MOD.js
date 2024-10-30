@@ -111,14 +111,17 @@ module.exports = {
           rconServer.disconnect()
           bridge.store(rconDetails.data.rconResponse, str)
           bridge.runner(rconDetails.data.actions)
+          resolve()
         }).on("end", function(){
           console.log(`Connection to ${ipAddr}:${ipPort} dropped.\n`)
+          resolve()
         }).on("error", function(str){
           console.log(`Error: ${str}\n`)
+          reject()
         })
     
         rconServer.connect()
-        
+
       })
     }
   }
