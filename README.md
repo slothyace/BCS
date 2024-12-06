@@ -4,4 +4,4 @@ Just a collection of commands I've built for [Bot Maker for Discord](https://sto
 
 Commands are grouped by their functionality class.
 ## Mods
-The mods folder has been moved to its own [repository](https://github.com/slothyace/BCX/tree/main/Mods)
+The mods folder has been moved to its own [repository](https://github.com/slothyace/bmods-acedia)
